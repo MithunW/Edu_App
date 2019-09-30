@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:edu_app/UI/onboarding.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +11,6 @@ void main() {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => OnBoarding(),
-        '/onboarding2': (context) => OnBoarding2()
+        '/': (context) => OnBoardingPage(),
       }));
 }
