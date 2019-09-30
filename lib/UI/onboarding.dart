@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'onboardingScreens.dart';
 
 class OnBoardingPageState extends State<OnBoardingPage> {
   final List<Widget> introWidgetsList = <Widget>[
@@ -22,7 +23,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
         child: Stack(
           children: [
             PageView.builder(
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: BouncingScrollPhysics(),
               itemCount: introWidgetsList.length,
               onPageChanged: (int page) {
                 getChangedPageAndMoveBar(page);
@@ -96,51 +97,5 @@ class OnBoardingPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return new OnBoardingPageState();
-  }
-}
-
-class Page1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        
-        child: Card(
-            color: Color.fromRGBO(0, 172, 36, 1),
-            child: Image.asset('assets/images/monkey.jpg')),
-      ),
-    );
-  }
-}
-
-class Page2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: RaisedButton(
-          child: Text('ඉදිරියට යන්න 2'),
-          onPressed: () {
-            Navigator.pushNamed(context, '/onboarding3');
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class Page3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: RaisedButton(
-          child: Text('ඉදිරියට යන්න 2'),
-          onPressed: () {
-            Navigator.pushNamed(context, '/onboarding3');
-          },
-        ),
-      ),
-    );
   }
 }
