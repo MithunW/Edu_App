@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         drawer: Drawer(
-          child: buildDrawer(size, padding),
+          child: buildDrawer(context),
         ),
         appBar: AppBar(
           title: Text("පහේ පන්තිය"),
@@ -44,65 +44,62 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildDrawer(size, padding) {
-    double height = size.height - padding.top - padding.bottom;
+  Widget buildDrawer(context) {
     return ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
-        Container(
-          color: Colors.green[400],
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-                size.width * 0.05, height * 0.25, size.width * 0.05, 0.0),
-            child: ListTile(
-              title: Text(
-                'Item 1',
-                textAlign: TextAlign.center,
-              ),
-              onTap: () {},
-            ),
-          ),
-        ),
-        Container(
-          color: Colors.green[800],
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-                size.width * 0.05, height * 0.25, size.width * 0.05, 0.0),
-            child: ListTile(
-              title: Text(
-                'Item 1',
-                textAlign: TextAlign.center,
-              ),
-              onTap: () {},
-            ),
+        DrawerHeader(
+          child: Text('Drawer Header'),
+          decoration: BoxDecoration(
+            color: Colors.green[800],
           ),
         ),
         Container(
           color: Colors.green[400],
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-                size.width * 0.05, height * 0.25, size.width * 0.05, 0.0),
-            child: ListTile(
-              title: Text(
-                'Item 1',
-                textAlign: TextAlign.center,
-              ),
-              onTap: () {},
+          child: ListTile(
+            title: Text(
+              'Item 1',
+              textAlign: TextAlign.center,
             ),
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
         ),
         Container(
-          color: Colors.green[800],
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-                size.width * 0.05, height * 0.25, size.width * 0.05, 0.0),
-            child: ListTile(
-              title: Text(
-                'Item 1',
-                textAlign: TextAlign.center,
-              ),
-              onTap: () {},
+          color: Colors.green[400],
+          child: ListTile(
+            title: Text(
+              'Item 1',
+              textAlign: TextAlign.center,
             ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        Container(
+          color: Colors.green[400],
+          child: ListTile(
+            title: Text(
+              'Item 1',
+              textAlign: TextAlign.center,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        Container(
+          color: Colors.green[400],
+          child: ListTile(
+            title: Text(
+              'Item 1',
+              textAlign: TextAlign.center,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
         ),
       ],
