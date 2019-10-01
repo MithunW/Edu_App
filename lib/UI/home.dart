@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 
-// class HomePage extends StatefulWidget {
-//   @override
-//   State<StatefulWidget> createState() {
-//     return new HomePageState();
-//   }
-// }
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    var padding = MediaQuery.of(context).padding;
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(
-          child: buildDrawer(context),
+        drawer: SizedBox(
+          width: size.width * 0.5,
+          child: Drawer(
+            child: buildDrawer(context),
+          ),
         ),
         appBar: AppBar(
           title: Text("පහේ පන්තිය"),
@@ -51,18 +46,18 @@ class HomePage extends StatelessWidget {
         DrawerHeader(
           child: Text('Drawer Header'),
           decoration: BoxDecoration(
-            color: Colors.green[800],
+            color: Colors.green[500],
           ),
         ),
         Container(
           color: Colors.green[400],
           child: ListTile(
             title: Text(
-              'Item 1',
+              'Progress',
               textAlign: TextAlign.center,
             ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, '/progress');
             },
           ),
         ),
@@ -70,11 +65,11 @@ class HomePage extends StatelessWidget {
           color: Colors.green[400],
           child: ListTile(
             title: Text(
-              'Item 1',
+              'Leaderboard',
               textAlign: TextAlign.center,
             ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, '/leaderboard');
             },
           ),
         ),
@@ -82,23 +77,11 @@ class HomePage extends StatelessWidget {
           color: Colors.green[400],
           child: ListTile(
             title: Text(
-              'Item 1',
+              'Settings',
               textAlign: TextAlign.center,
             ),
             onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        Container(
-          color: Colors.green[400],
-          child: ListTile(
-            title: Text(
-              'Item 1',
-              textAlign: TextAlign.center,
-            ),
-            onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, '/settings');
             },
           ),
         ),
