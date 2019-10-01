@@ -12,28 +12,63 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.amber,
+        drawer: Drawer(
+          child: buildDrawer(),
+        ),
         appBar: AppBar(),
         body: buildHome(),
-        bottomNavigationBar: BottomAppBar(
-          color: Color.fromRGBO(0, 172, 36, 1),
-          shape: const CircularNotchedRectangle(),
-          child: Container(
-            height: 50.0,
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.add),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );
   }
 
   Widget buildHome() {
-    return Container(
-      child: Text('hello'),
+    return Center(
+      child: Container(
+          child: ListView(
+        children: <Widget>[
+          Card(
+            child: Text("Paper 1"),
+          ),
+          Card(
+            child: Text("Paper 2"),
+          ),
+          Card(
+            child: Text("Paper 3"),
+          ),
+          Card(
+            child: Text("Paper 4"),
+          ),
+        ],
+      )),
+    );
+  }
+
+  Widget buildDrawer() {
+    return ListView(
+      // Important: Remove any padding from the ListView.
+      padding: EdgeInsets.zero,
+      children: <Widget>[
+        DrawerHeader(
+          child: Text('Drawer Header'),
+          decoration: BoxDecoration(
+            color: Colors.blue,
+          ),
+        ),
+        ListTile(
+          title: Text('Item 1'),
+          onTap: () {
+            // Update the state of the app.
+            // ...
+          },
+        ),
+        ListTile(
+          title: Text('Item 2'),
+          onTap: () {
+            // Update the state of the app.
+            // ...
+          },
+        ),
+      ],
     );
   }
 }
