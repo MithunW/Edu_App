@@ -10,65 +10,100 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    var padding = MediaQuery.of(context).padding;
     return SafeArea(
       child: Scaffold(
         drawer: Drawer(
-          child: buildDrawer(),
+          child: buildDrawer(size, padding),
         ),
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text("පහේ පන්තිය"),
+        ),
         body: buildHome(),
       ),
     );
   }
 
-
-
   Widget buildHome() {
-    return Center(
-      child: Container(
-          child: ListView(
-        children: <Widget>[
-          Card(
-            child: Text("Paper 1"),
-          ),
-          Card(
-            child: Text("Paper 2"),
-          ),
-          Card(
-            child: Text("Paper 3"),
-          ),
-          Card(
-            child: Text("Paper 4"),
-          ),
-        ],
-      )),
+    return Container(
+      child: ListView.builder(
+        itemCount: 100,
+        itemBuilder: (context, position) {
+          return Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                position.toString(),
+                style: TextStyle(fontSize: 22.0),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 
-  Widget buildDrawer() {
+  Widget buildDrawer(size, padding) {
+    double height = size.height - padding.top - padding.bottom;
     return ListView(
-      // Important: Remove any padding from the ListView.
       padding: EdgeInsets.zero,
       children: <Widget>[
-        DrawerHeader(
-          child: Text('Drawer Header'),
-          decoration: BoxDecoration(
-            color: Colors.blue,
+        Container(
+          color: Colors.green[400],
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                size.width * 0.05, height * 0.25, size.width * 0.05, 0.0),
+            child: ListTile(
+              title: Text(
+                'Item 1',
+                textAlign: TextAlign.center,
+              ),
+              onTap: () {},
+            ),
           ),
         ),
-        ListTile(
-          title: Text('Item 1'),
-          onTap: () {
-            // Update the state of the app.
-            // ...
-          },
+        Container(
+          color: Colors.green[800],
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                size.width * 0.05, height * 0.25, size.width * 0.05, 0.0),
+            child: ListTile(
+              title: Text(
+                'Item 1',
+                textAlign: TextAlign.center,
+              ),
+              onTap: () {},
+            ),
+          ),
         ),
-        ListTile(
-          title: Text('Item 2'),
-          onTap: () {
-            // Update the state of the app.
-            // ...
-          },
+        Container(
+          color: Colors.green[400],
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                size.width * 0.05, height * 0.25, size.width * 0.05, 0.0),
+            child: ListTile(
+              title: Text(
+                'Item 1',
+                textAlign: TextAlign.center,
+              ),
+              onTap: () {},
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.green[800],
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                size.width * 0.05, height * 0.25, size.width * 0.05, 0.0),
+            child: ListTile(
+              title: Text(
+                'Item 1',
+                textAlign: TextAlign.center,
+              ),
+              onTap: () {},
+            ),
+          ),
         ),
       ],
     );
