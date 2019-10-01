@@ -1,3 +1,4 @@
+import 'package:edu_app/UI/home.dart';
 import 'package:edu_app/UI/onboarding.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +10,9 @@ void main() {
         primaryColor: Color.fromRGBO(0, 172, 36, 1),
         accentColor: Colors.white,
       ),
-      initialRoute: '/',
+      initialRoute: '/onBoarding',
       routes: {
-        '/': (context) => OnBoardingPage(),
+        '/onBoarding': (context) => OnBoardingPage(),
+        '/home': (context) => HomePage(),
       }));
 }

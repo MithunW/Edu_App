@@ -61,7 +61,9 @@ class OnBoardingPageState extends State<OnBoardingPage> {
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0.0, 0.0, 30.0, 30.0),
                   child: FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/home');
+                    },
                     shape: BeveledRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(26))),
                     child: Icon(Icons.arrow_forward),
