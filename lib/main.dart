@@ -12,7 +12,7 @@ void main() {
         primaryColor: Color.fromRGBO(0, 172, 36, 1),
         accentColor: Colors.white,
       ),
-      initialRoute: '/onBoarding',
+      initialRoute: '/',
       routes: {
         '/': (context) => Splash(),
         '/onBoarding': (context) => OnBoardingPage(),

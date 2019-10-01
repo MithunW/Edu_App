@@ -4,6 +4,17 @@ class ProgressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container(child:Text('Add progress ui here'));
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(),
+        body: Container(
+          child: buildScreen(),
+        ),
+      ),
+    );
+  }
+
+  Widget buildScreen(){
+    return Text('ui here');
   }
 }
