@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ProgressPage extends StatelessWidget {
+class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Progress'),
+          title: Text('Settings'),
         ),
         body: Container(
           child: buildScreen(),

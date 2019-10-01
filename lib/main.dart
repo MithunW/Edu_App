@@ -1,11 +1,14 @@
 import 'package:edu_app/UI/home.dart';
+import 'package:edu_app/UI/leaderboard.dart';
 import 'package:edu_app/UI/onboarding.dart';
+import 'package:edu_app/UI/settings.dart';
 import 'package:edu_app/UI/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:edu_app/UI/progress.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(
+    MaterialApp(
       title: "පහේ පන්තිය",
       theme: ThemeData(
         brightness: Brightness.light,
@@ -18,5 +21,9 @@ void main() {
         '/onBoarding': (context) => OnBoardingPage(),
         '/home': (context) => HomePage(),
         '/progress': (context) => ProgressPage(),
-      }));
+        '/settings': (context) => SettingsPage(),
+        '/leaderboard': (context) => LeaderboardPage(),
+      },
+    ),
+  );
 }

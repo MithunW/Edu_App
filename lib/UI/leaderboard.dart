@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ProgressPage extends StatelessWidget {
+class LeaderboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

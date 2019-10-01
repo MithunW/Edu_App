@@ -6,11 +6,8 @@ class HomePage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        drawer: SizedBox(
-          width: size.width * 0.5,
-          child: Drawer(
-            child: buildDrawer(context),
-          ),
+        drawer: Drawer(
+          child: buildDrawer(context),
         ),
         appBar: AppBar(
           title: Text("පහේ පන්තිය"),
@@ -29,7 +26,7 @@ class HomePage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                position.toString(),
+                'Paper $position',
                 style: TextStyle(fontSize: 22.0),
               ),
             ),
@@ -46,39 +43,57 @@ class HomePage extends StatelessWidget {
         DrawerHeader(
           child: Text('Drawer Header'),
           decoration: BoxDecoration(
-            color: Colors.green[500],
+            color: Color.fromRGBO(0, 172, 36, 1),
           ),
         ),
         Container(
-          color: Colors.green[400],
+          decoration: BoxDecoration(
+            color: Colors.green[600],
+            border: Border.all(color: Colors.black54),
+          ),
           child: ListTile(
             title: Text(
               'Progress',
               textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white),
             ),
             onTap: () {
               Navigator.pushNamed(context, '/progress');
             },
           ),
         ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.01,
+        ),
         Container(
-          color: Colors.green[400],
+          decoration: BoxDecoration(
+            color: Colors.green[600],
+            border: Border.all(color: Colors.black54),
+          ),
           child: ListTile(
             title: Text(
               'Leaderboard',
               textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white),
             ),
             onTap: () {
               Navigator.pushNamed(context, '/leaderboard');
             },
           ),
         ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.01,
+        ),
         Container(
-          color: Colors.green[400],
+          decoration: BoxDecoration(
+            color: Colors.green[600],
+            border: Border.all(color: Colors.black54),
+          ),
           child: ListTile(
             title: Text(
               'Settings',
               textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white),
             ),
             onTap: () {
               Navigator.pushNamed(context, '/settings');
