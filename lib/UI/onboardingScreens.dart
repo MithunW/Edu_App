@@ -52,7 +52,7 @@ class Page1 extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color.fromRGBO(0, 172, 36, 1),
-                fontSize: 20,
+                fontSize: size.height * 0.02,
                 fontWeight: FontWeight.w100,
                 shadows: [
                   Shadow(
@@ -100,7 +100,7 @@ class Page2 extends StatelessWidget {
                     'පහේ පන්තිය',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 40,
+                        fontSize: size.height * 0.04,
                         fontWeight: FontWeight.w200,
                         shadows: [
                           Shadow(
@@ -122,7 +122,7 @@ class Page2 extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color.fromRGBO(0, 172, 36, 1),
-                  fontSize: 19,
+                  fontSize: size.height * 0.019,
                   fontWeight: FontWeight.w100,
                   shadows: [
                     Shadow(
@@ -145,7 +145,6 @@ class Page3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    String value = "";
     return Scaffold(
       body: Column(
         children: [
@@ -172,7 +171,7 @@ class Page3 extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: size.height * 0.02,
                           fontWeight: FontWeight.w200,
                           shadows: [
                             Shadow(
