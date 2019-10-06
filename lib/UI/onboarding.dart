@@ -66,7 +66,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
                     },
                     shape: BeveledRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(26))),
-                    child: Icon(Icons.arrow_forward),
+                    child: Text('ආරම්භ කරන්න'), //Icon(Icons.arrow_forward),
                   ),
                 ),
               ),

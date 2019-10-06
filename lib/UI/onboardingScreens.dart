@@ -217,28 +217,6 @@ class Page3 extends StatelessWidget {
                 ),
                 TextFormField(
                   decoration: new InputDecoration(
-                    labelText: "ශ්‍රේණිය",
-                    fillColor: Colors.white,
-                    border: new OutlineInputBorder(
-                      borderRadius: new BorderRadius.circular(25.0),
-                      borderSide: new BorderSide(),
-                    ),
-                  ),
-                  validator: (val) {
-                    if (val.length == 0) {
-                      return "හිස් විය නොහැක";
-                    } else {
-                      return null;
-                    }
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                  style: new TextStyle(),
-                ),
-                SizedBox(
-                  height: (size.height) * 0.05,
-                ),
-                TextFormField(
-                  decoration: new InputDecoration(
                       labelText: "දුරකතන අංකය",
                       //fillColor: Colors.white,
                       border: new OutlineInputBorder(
