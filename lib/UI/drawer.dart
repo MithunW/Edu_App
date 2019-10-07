@@ -94,6 +94,12 @@ Widget buildDrawer(context, size) {
           },
         ),
       ),
+      Expanded(
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child:  Text('Bottom'),
+        ),
+      ),
     ],
   );
 }
