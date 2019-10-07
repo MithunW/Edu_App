@@ -1,3 +1,4 @@
+import 'package:edu_app/UI/aboutus.dart';
 import 'package:edu_app/UI/home.dart';
 import 'package:edu_app/UI/leaderboard.dart';
 import 'package:edu_app/UI/onboarding.dart';
@@ -21,8 +22,9 @@ void main() {
         '/onBoarding': (context) => OnBoardingPage(),
         '/home': (context) => HomePage(),
         '/progress': (context) => ProgressPage(),
-        '/settings': (context) => SettingsPage(),
         '/leaderboard': (context) => LeaderboardPage(),
+        '/settings': (context) => SettingsPage(),
+        '/aboutus': (context) => AboutUsPage(),
       },
     ),
   );

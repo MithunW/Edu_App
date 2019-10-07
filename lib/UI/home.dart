@@ -1,6 +1,7 @@
 import 'package:edu_app/Datalayer/Database.dart';
 import 'package:flutter/material.dart';
 import 'package:edu_app/UI/drawer.dart';
+import 'package:edu_app/UI/paper.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,6 +15,9 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             "පහේ පන්තිය",
+            style: TextStyle(
+              fontSize: size.height * 0.03,
+            ),
           ),
         ),
         body: buildHome(size),
@@ -27,26 +31,7 @@ class HomePage extends StatelessWidget {
       child: ListView.builder(
         itemCount: list.length,
         itemBuilder: (context, position) {
-          return Padding(
-            padding: EdgeInsets.fromLTRB(size.width * 0.08, size.height * 0.02,
-                size.width * 0.08, size.height * 0.02),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Color.fromRGBO(36, 209, 99, 0.9),
-              ),
-              child: ExpansionTile(
-                title: list[position],
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(
-                        0.0, size.height * 0.06, 0.0, size.height * 0.06),
-                    child: list[position],
-                  ),
-                ],
-              ),
-            ),
-          );
+          return buildPaper(size, list, position);
         },
       ),
     );
