@@ -22,8 +22,8 @@ class Page1 extends StatelessWidget {
                 Container(
                   color: Color.fromRGBO(96, 186, 111, 1),
                   child: Image(
-                    image: AssetImage('assets/images/owl.png'),
-                    height: size.height * 0.5,
+                    image: AssetImage('assets/images/children.png'),
+                    height: size.height * 0.4,
                     width: size.width,
                   ),
                 ),
@@ -94,7 +94,11 @@ class Page2 extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     color: Color.fromRGBO(96, 186, 111, 1),
-                    child: Image.asset('assets/images/owl.png'),
+                    child: Image(
+                      image: AssetImage('assets/images/children.png'),
+                      height: size.height * 0.4,
+                      width: size.width,
+                    ),
                   ),
                   Text(
                     'පහේ පන්තිය',

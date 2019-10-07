@@ -1,5 +1,6 @@
 import 'package:edu_app/Datalayer/Database.dart';
 import 'package:flutter/material.dart';
+import 'package:edu_app/UI/drawer.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -48,80 +49,6 @@ class HomePage extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-
-  Widget buildDrawer(context, size) {
-    return ListView(
-      padding: EdgeInsets.zero,
-      children: <Widget>[
-        DrawerHeader(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(0.0, size.height * 0.05, 0.0, 0.0),
-            child: Text(
-              'පහේ පන්තිය',
-              style: TextStyle(
-                  fontSize: size.height * 0.05,
-                  color: Color.fromRGBO(30, 172, 80, 1)),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(30, 172, 80, 1),
-            border: Border.all(color: Colors.black12),
-          ),
-          child: ListTile(
-            title: Text(
-              'මගේ ප්‍රගතිය',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () {
-              Navigator.pushNamed(context, '/progress');
-            },
-          ),
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.01,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(30, 172, 80, 1),
-            border: Border.all(color: Colors.black12),
-          ),
-          child: ListTile(
-            title: Text(
-              'ප්‍රමුඛ පුවරුව',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () {
-              Navigator.pushNamed(context, '/leaderboard');
-            },
-          ),
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.01,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(30, 172, 80, 1),
-            border: Border.all(color: Colors.black12),
-          ),
-          child: ListTile(
-            title: Text(
-              'සැකසුම්',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () {
-              Navigator.pushNamed(context, '/settings');
-            },
-          ),
-        ),
-      ],
     );
   }
 }
