@@ -15,17 +15,20 @@ class Page1 extends StatelessWidget {
                   offset: new Offset(2.0, 2.0),
                 )
               ],
-              color: Color.fromRGBO(96, 186, 111, 1),
+              color: Color.fromRGBO(30, 172, 80, 1),
             ),
             child: Column(
               children: <Widget>[
-                Container(
-                  color: Color.fromRGBO(96, 186, 111, 1),
-                  child: Image(
-                    image: AssetImage('assets/images/children.png'),
-                    height: size.height * 0.4,
-                    width: size.width,
-                  ),
+                SizedBox(
+                  height: size.height * 0.05,
+                ),
+                Image(
+                  image: AssetImage('assets/images/children.png'),
+                  height: size.height * 0.3,
+                  width: size.width,
+                ),
+                SizedBox(
+                  height: size.height * 0.02,
                 ),
                 Text(
                   'පහේ පන්තිය',
@@ -43,7 +46,7 @@ class Page1 extends StatelessWidget {
                 )
               ],
             ),
-            height: (size.height) * 0.6,
+            height: (size.height) * 0.5,
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(0.0, (size.height) * 0.1, 0.0, 0.0),
@@ -52,7 +55,7 @@ class Page1 extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color.fromRGBO(0, 172, 36, 1),
-                fontSize: size.height * 0.02,
+                fontSize: size.height * 0.025,
                 fontWeight: FontWeight.w100,
                 shadows: [
                   Shadow(
@@ -81,30 +84,30 @@ class Page2 extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  new BoxShadow(
-                    color: Colors.black38,
-                    offset: new Offset(2.0, 2.0),
-                  )
-                ],
-                color: Color.fromRGBO(96, 186, 111, 1),
-              ),
+              decoration: BoxDecoration(boxShadow: [
+                new BoxShadow(
+                  color: Colors.black38,
+                  offset: new Offset(2.0, 2.0),
+                )
+              ], color: Color.fromRGBO(30, 172, 80, 1)),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    color: Color.fromRGBO(96, 186, 111, 1),
-                    child: Image(
-                      image: AssetImage('assets/images/children.png'),
-                      height: size.height * 0.4,
-                      width: size.width,
-                    ),
+                  SizedBox(
+                    height: size.height * 0.05,
+                  ),
+                  Image(
+                    image: AssetImage('assets/images/children.png'),
+                    height: size.height * 0.3,
+                    width: size.width,
+                  ),
+                  SizedBox(
+                    height: size.height * 0.02,
                   ),
                   Text(
                     'පහේ පන්තිය',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: size.height * 0.04,
+                        fontSize: size.height * 0.06,
                         fontWeight: FontWeight.w200,
                         shadows: [
                           Shadow(
@@ -116,17 +119,17 @@ class Page2 extends StatelessWidget {
                   )
                 ],
               ),
-              height: (size.height) * 0.6,
+              height: (size.height) * 0.5,
             ),
             Padding(
               padding: EdgeInsets.fromLTRB((size.height) * 0.01,
                   (size.height) * 0.1, (size.height) * 0.01, 0.0),
               child: Text(
-                'අලුත් විදියකට ඉගෙන ගන්න ඔබ සූදානම්ද ? පහේ පන්තියෙන් ඔබට සෑම සතියකම අලුත්ම ප්‍රශ්න පත්‍රයක්.',
+                'අලුත් විදියකට ඉගෙන ගන්න ඔබ සූදානම්ද ? \n පහේ පන්තියෙන් ඔබට සෑම සතියකම අලුත්ම ප්‍රශ්න පත්‍රයක්.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color.fromRGBO(0, 172, 36, 1),
-                  fontSize: size.height * 0.019,
+                  fontSize: size.height * 0.025,
                   fontWeight: FontWeight.w100,
                   shadows: [
                     Shadow(
@@ -153,20 +156,16 @@ class Page3 extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                new BoxShadow(
-                  color: Colors.black38,
-                  offset: new Offset(2.0, 2.0),
-                )
-              ],
-              color: Color.fromRGBO(96, 186, 111, 1),
-            ),
+            decoration: BoxDecoration(boxShadow: [
+              new BoxShadow(
+                color: Colors.black38,
+                offset: new Offset(2.0, 2.0),
+              )
+            ], color: Color.fromRGBO(30, 172, 80, 1)),
             child: Column(
               children: <Widget>[
                 Container(
                   width: size.width,
-                  color: Color.fromRGBO(96, 186, 111, 1),
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(
                         0.0, (size.height) * 0.04, 0.0, 0.0),

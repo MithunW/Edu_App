@@ -57,16 +57,20 @@ class OnBoardingPageState extends State<OnBoardingPage> {
                   ? true
                   : false,
               child: Align(
-                alignment: Alignment.bottomRight,
+                alignment: Alignment.center,
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0.0, 0.0, 30.0, 30.0),
-                  child: FloatingActionButton(
+                  child: FloatingActionButton.extended(
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/home');
                     },
-                    shape: BeveledRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(26))),
-                    child: Text('ආරම්භ කරන්න'), //Icon(Icons.arrow_forward),
+                    backgroundColor: Color.fromRGBO(30, 172, 80, 1),
+                    label: Text(
+                      'ආරම්භ කරන්න',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ), //Icon(Icons.arrow_forward),
                   ),
                 ),
               ),

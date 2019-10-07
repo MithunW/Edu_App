@@ -7,13 +7,17 @@ Widget buildPaper(size, list, position) {
     child: Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Color.fromRGBO(36, 209, 99, 0.9),
+        border: Border.all(
+          color: Color.fromRGBO(30, 172, 80, 1),
+          //color: Color.fromRGBO(36, 209, 99, 0.9),
+        ),
+        color: Colors.white,
       ),
       child: ExpansionTile(
         title: Text(
           list[position],
           style: TextStyle(
-            color: Colors.white,
+            color: Color.fromRGBO(30, 172, 80, 1),
             fontSize: size.height * 0.025,
           ),
         ),
@@ -21,7 +25,48 @@ Widget buildPaper(size, list, position) {
           Padding(
             padding: EdgeInsets.fromLTRB(
                 0.0, size.height * 0.06, 0.0, size.height * 0.06),
-            child: Text('Buttons related to paper'),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: size.width * 0.12,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                    color: Color.fromRGBO(30, 172, 80, 1),
+                  )),
+                  child: FlatButton(
+                    color: Colors.white,
+                    child: Text(
+                      'Do the Paper',
+                      style: TextStyle(
+                        color: Color.fromRGBO(30, 172, 80, 1),
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+                SizedBox(
+                  width: size.width * 0.08,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                    color: Color.fromRGBO(30, 172, 80, 1),
+                  )),
+                  child: FlatButton(
+                    color: Colors.white,
+                    child: Text(
+                      'Review',
+                      style: TextStyle(
+                        color: Color.fromRGBO(30, 172, 80, 1),
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
