@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class ProgressPage extends StatelessWidget {
   @override
@@ -23,7 +24,7 @@ class ProgressPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: new Text("Circular Percent Indicators"),
+        title: new Text("My Progress"),
       ),
       body: Center(
         child: ListView(children: <Widget>[
@@ -31,7 +32,7 @@ class ProgressPage extends StatelessWidget {
             radius: 100.0,
             lineWidth: 10.0,
             percent: 0.8,
-            header: new Text("Icon header"),
+            header: new Text("Mithun Wijethunga"),
             center: new Icon(
               Icons.person_pin,
               size: 50.0,
