@@ -12,14 +12,11 @@ class Database {
     //TODO implement the backend connection for the function
     return list;
   }
+    static List<String> getUsers() {
 
-  static List getQuestions() {
-    List list = new List<String>();
-    int counter = 10;
-    int count = counter;
-    do {
-      int question = (count + 1) - counter;
-      list.add('ප්‍රශ්න $question ');
+
+      int user = (count + 1) - counter;
+      list.add('User $user ');
       counter--;
     } while (counter > 0);
 
