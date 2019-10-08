@@ -14,11 +14,19 @@ Widget buildUser(size, list, position) {
         color: Colors.white,
       ),
       child: ListTile(
+        leading: Text(
+          (position + 1).toString(),
+          style: TextStyle(fontSize: 20),
+        ),
+        trailing: Stack(children: [
+          Icon(Icons.favorite, color: Colors.pink, size: 24.0),
+          Text("      Marks", style: TextStyle(fontSize: 20)),
+        ]),
         title: Text(
           list[position],
           style: TextStyle(
             color: Color.fromRGBO(30, 172, 80, 1),
-            fontSize: size.height * 0.025,
+            fontSize: 20,
           ),
         ),
       ),

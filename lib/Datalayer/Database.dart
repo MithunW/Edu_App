@@ -18,7 +18,7 @@ class Database {
     int count = counter;
     do {
       int user = (count + 1) - counter;
-      list.add('$user User $user ');
+      list.add('User $user ');
       counter--;
     } while (counter > 0);
 
