@@ -20,18 +20,18 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        body: buildHome(size),
+        body: buildHome(size, context),
       ),
     );
   }
 
-  Widget buildHome(size) {
+  Widget buildHome(size, context) {
     List list = Database.getPapers();
     return Container(
       child: ListView.builder(
         itemCount: list.length,
         itemBuilder: (context, position) {
-          return buildPaper(size, list, position);
+          return buildPaper(context, size, list, position);
         },
       ),
     );
