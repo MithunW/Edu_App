@@ -26,7 +26,7 @@ void main() {
         '/leaderboard': (context) => LeaderboardPage(),
         '/settings': (context) => SettingsPage(),
         '/aboutus': (context) => AboutUsPage(),
-        '/paper1': (context) => QuizPage(),
+        '/paper': (context) => QuizPage(),
       },
     ),
   );

@@ -18,6 +18,10 @@ class QuizPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Card(
+            color: Colors.green,
+            child: Text(list[0]),
+          ),
+          Card(
             child: Text(
               'Question should be here. Question should be here, Question should be here',
             ),

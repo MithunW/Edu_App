@@ -44,8 +44,8 @@ Widget buildPaper(context, size, list, position) {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                          context, '/paper$position');
+                      Navigator.pushNamed(
+                          context, '/paper');
                     },
                   ),
                 ),
