@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget buildPaper(size, list, position) {
+Widget buildPaper(context, size, list, position) {
   return Padding(
     padding: EdgeInsets.fromLTRB(size.width * 0.08, size.height * 0.02,
         size.width * 0.08, size.height * 0.02),
@@ -43,7 +43,10 @@ Widget buildPaper(size, list, position) {
                         color: Color.fromRGBO(30, 172, 80, 1),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                          context, '/paper$position');
+                    },
                   ),
                 ),
                 SizedBox(

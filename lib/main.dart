@@ -2,6 +2,7 @@ import 'package:edu_app/UI/aboutus.dart';
 import 'package:edu_app/UI/home.dart';
 import 'package:edu_app/UI/leaderboard.dart';
 import 'package:edu_app/UI/onboarding.dart';
+import 'package:edu_app/UI/quiz.dart';
 import 'package:edu_app/UI/settings.dart';
 import 'package:edu_app/UI/splash.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ void main() {
         '/leaderboard': (context) => LeaderboardPage(),
         '/settings': (context) => SettingsPage(),
         '/aboutus': (context) => AboutUsPage(),
+        '/paper1': (context) => QuizPage(),
       },
     ),
   );
