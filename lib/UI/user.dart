@@ -16,11 +16,18 @@ Widget buildUser(size, list, position) {
       child: ListTile(
         leading: Text(
           (position + 1).toString(),
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.green[900],
+          ),
         ),
         trailing: Stack(children: [
           Icon(Icons.favorite, color: Colors.pink, size: 24.0),
-          Text("      Marks", style: TextStyle(fontSize: 20)),
+          Text("      ලකුණු",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.green[700],
+              )),
         ]),
         title: Text(
           list[position],

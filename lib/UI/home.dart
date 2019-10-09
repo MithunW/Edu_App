@@ -1,7 +1,8 @@
-import 'package:edu_app/Datalayer/Database.dart';
+// import 'package:edu_app/Datalayer/Database.dart';
 import 'package:flutter/material.dart';
 import 'package:edu_app/UI/drawer.dart';
-import 'package:edu_app/UI/paper.dart';
+import 'package:edu_app/UI/paper_home.dart';
+import 'package:edu_app/models/readPaper.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -20,18 +21,23 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        body: buildHome(size, context),
+        body: FutureBuilder(
+            future: loadPaper(),
+            builder: (context, snapshot) {
+              return snapshot.data != null
+                  ? buildHome(snapshot.data, size, context)
+                  : Center(child: CircularProgressIndicator());
+            }),
       ),
     );
   }
 
-  Widget buildHome(size, context) {
-    List list = Database.getPapers();
+  Widget buildHome(paper, size, context) {
     return Container(
       child: ListView.builder(
-        itemCount: list.length,
+        itemCount: 10,
         itemBuilder: (context, position) {
-          return buildPaper(context, size, list, position);
+          return buildPaper(context, size, position, paper);
         },
       ),
     );

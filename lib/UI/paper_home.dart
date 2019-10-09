@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget buildPaper(context, size, list, position) {
+Widget buildPaper(context, size, position, paper) {
   return Padding(
     padding: EdgeInsets.fromLTRB(size.width * 0.08, size.height * 0.02,
         size.width * 0.08, size.height * 0.02),
@@ -15,7 +15,7 @@ Widget buildPaper(context, size, list, position) {
       ),
       child: ExpansionTile(
         title: Text(
-          list[position],
+          'Paper ${position+1}',
           style: TextStyle(
             color: Color.fromRGBO(30, 172, 80, 1),
             fontSize: size.height * 0.025,
@@ -44,8 +44,7 @@ Widget buildPaper(context, size, list, position) {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(
-                          context, '/paper');
+                      Navigator.pushNamed(context, '/paper');
                     },
                   ),
                 ),

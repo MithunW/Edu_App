@@ -9,7 +9,7 @@ class LeaderboardPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Leaderboard'),
+          title: Text('ප්‍රමුඛ පුවරුව | Leaderboard'),
         ),
         body: Container(
           child: buildScreen(size),
@@ -43,15 +43,16 @@ class LeaderboardPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: Colors.white,
-                    //color: Color.fromRGBO(36, 209, 99, 0.9),
+                    color: Color.fromRGBO(36, 209, 99, 0.9),
                   ),
+                  color: Colors.white,
                 ),
                 padding: EdgeInsets.fromLTRB(0, size.height * 0.005, 0, 0),
                 //alignment: Alignment.centerLeft,
-                child: Text("Your Rank - 12",
+                child: Text("ඔබේ ස්ථානය - 12",
                     style: TextStyle(
-                      fontSize: size.height * 0.04,
+                      fontSize: size.height * 0.035,
+                      color: Colors.green[800],
                     ),
                     textAlign: TextAlign.center),
               ),

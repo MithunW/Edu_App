@@ -1,5 +1,5 @@
 class Paper {
-  int id;
+  String id;
   List<Question> qs;
 
   Paper({
@@ -8,9 +8,11 @@ class Paper {
   });
 
   factory Paper.fromJson(Map<String, dynamic> json) {
+    var list = json['qs'] as List;
+    List<Question> qsList = list.map((i) => Question.fromJson(i)).toList();
     return Paper(
       id: json["id"],
-      qs: json["qs"].map((q) => Question.fromJson(q)),
+      qs: qsList,
     );
   }
 }
@@ -19,7 +21,7 @@ class Question {
   int n;
   Content q;
   List<Answer> as;
-  String a;
+  int a;
 
   Question({
     this.n,
@@ -29,10 +31,12 @@ class Question {
   });
 
   factory Question.fromJson(Map<String, dynamic> json) {
+    var asFromJson = json['as'] as List;
+    List<Answer> asList = asFromJson.map((i) => Answer.fromJson(i)).toList();
     return Question(
       n: json["n"],
       q: Content.fromJson(json["q"]),
-      as: json["as"].map((a) => Answer.fromJson(a)),
+      as: asList,
       a: json["a"],
     );
   }
