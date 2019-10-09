@@ -15,6 +15,10 @@ class Paper {
       qs: qsList,
     );
   }
+
+  void setId(String id) {
+    this.id = id;
+  }
 }
 
 class Question {

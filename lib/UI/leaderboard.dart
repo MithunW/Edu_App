@@ -13,7 +13,7 @@ class LeaderboardPage extends StatelessWidget {
       body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/bg.jpg'),
+                image: AssetImage('assets/images/leaderbg.jpg'),
                 fit: BoxFit.fitHeight),
           ),
           child: buildScreen(context)),
@@ -35,30 +35,7 @@ class LeaderboardPage extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              height: size.height * 0.1,
-              width: size.width,
-              color: AppColor.colors[4].color,
-              padding: EdgeInsets.fromLTRB(size.width * 0.08,
-                  size.height * 0.02, size.width * 0.08, size.height * 0.02),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: AppColor.colors[4].color,
-                  ),
-                  color: Colors.white,
-                ),
-                padding: EdgeInsets.fromLTRB(0, size.height * 0.005, 0, 0),
-                //alignment: Alignment.centerLeft,
-                child: Text("ඔබේ ස්ථානය - 12",
-                    style: TextStyle(
-                      fontSize: size.height * 0.035,
-                      color: AppColor.colors[1].color,
-                    ),
-                    textAlign: TextAlign.center),
-              ),
-            ),
+            child: buildMe(size),
           ),
         ],
       ),
@@ -99,6 +76,53 @@ class LeaderboardPage extends StatelessWidget {
             style: TextStyle(
               color: AppColor.colors[1].color,
               fontSize: 20,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildMe(size) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: AppColor.colors[5].color,
+      ),
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(size.width * 0.08, size.height * 0.02,
+            size.width * 0.08, size.height * 0.02),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: AppColor.colors[1].color,
+              //color: Color.fromRGBO(36, 209, 99, 0.9),
+            ),
+            color: Colors.white,
+          ),
+          child: ListTile(
+            leading: Text(
+              '4',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.green[900],
+              ),
+            ),
+            trailing: Stack(children: [
+              Icon(Icons.grade, color: AppColor.colors[3].color, size: 24.0),
+              Text("      179",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: AppColor.colors[1].color,
+                  )),
+            ]),
+            title: Text(
+              'Username',
+              style: TextStyle(
+                color: AppColor.colors[1].color,
+                fontSize: 20,
+              ),
             ),
           ),
         ),

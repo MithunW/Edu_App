@@ -1,6 +1,6 @@
 import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/UI/leaderboard.dart';
-import 'package:edu_app/UI/rootpage.dart';
+import 'package:edu_app/UI/paperview.dart';
 import 'package:edu_app/UI/progress.dart';
 import 'package:edu_app/UI/settings.dart';
 import 'package:flutter/material.dart';

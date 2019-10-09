@@ -1,6 +1,7 @@
 import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/UI/home.dart';
 import 'package:edu_app/UI/onboarding.dart';
+import 'package:edu_app/UI/paperScreen.dart';
 import 'package:edu_app/UI/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ void main() {
         '/': (context) => Splash(),
         '/onBoarding': (context) => OnBoardingPage(),
         '/home': (context) => HomePage(),
+        PaperScreen.routeName: (context) => PaperScreen(),
       },
     ),
   );
