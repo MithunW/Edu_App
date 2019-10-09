@@ -1,3 +1,4 @@
+import 'package:edu_app/UI/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'onboardingScreens.dart';
@@ -64,7 +65,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/home');
                     },
-                    backgroundColor: Color.fromRGBO(30, 172, 80, 1),
+                    backgroundColor: AppColor.colors[1].color,
                     label: Text(
                       'ආරම්භ කරන්න',
                       style: TextStyle(
@@ -93,7 +94,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       height: isActive ? 12 : 8,
       width: isActive ? 12 : 8,
       decoration: BoxDecoration(
-          color: isActive ? Colors.orange : Colors.grey,
+          color: isActive ? Colors.blue[900] : Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(12))),
     );
   }

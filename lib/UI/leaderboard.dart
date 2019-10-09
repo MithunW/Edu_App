@@ -1,25 +1,27 @@
 import 'package:edu_app/Datalayer/Database.dart';
+import 'package:edu_app/UI/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:edu_app/UI/user.dart';
 
 class LeaderboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('ප්‍රමුඛ පුවරුව | Leaderboard'),
-        ),
-        body: Container(
-          child: buildScreen(size),
-        ),
-        // bottomNavigationBar: builduserRank(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
       ),
+      body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/bg.jpg'),
+                fit: BoxFit.fitHeight),
+          ),
+          child: buildScreen(context)),
     );
   }
 
-  Widget buildScreen(size) {
+  Widget buildScreen(context) {
+    var size = MediaQuery.of(context).size;
     List list = Database.getUsers();
     return Container(
       child: Stack(
@@ -36,14 +38,14 @@ class LeaderboardPage extends StatelessWidget {
             child: Container(
               height: size.height * 0.1,
               width: size.width,
-              color: Color.fromRGBO(30, 172, 80, 1),
+              color: AppColor.colors[4].color,
               padding: EdgeInsets.fromLTRB(size.width * 0.08,
                   size.height * 0.02, size.width * 0.08, size.height * 0.02),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: Color.fromRGBO(36, 209, 99, 0.9),
+                    color: AppColor.colors[4].color,
                   ),
                   color: Colors.white,
                 ),
@@ -52,13 +54,54 @@ class LeaderboardPage extends StatelessWidget {
                 child: Text("ඔබේ ස්ථානය - 12",
                     style: TextStyle(
                       fontSize: size.height * 0.035,
-                      color: Colors.green[800],
+                      color: AppColor.colors[1].color,
                     ),
                     textAlign: TextAlign.center),
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget buildUser(size, list, position) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(size.width * 0.08, size.height * 0.02,
+          size.width * 0.08, size.height * 0.02),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: AppColor.colors[1].color,
+            //color: Color.fromRGBO(36, 209, 99, 0.9),
+          ),
+          color: Colors.white,
+        ),
+        child: ListTile(
+          leading: Text(
+            (position + 1).toString(),
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.green[900],
+            ),
+          ),
+          trailing: Stack(children: [
+            Icon(Icons.grade, color: AppColor.colors[3].color, size: 24.0),
+            Text("      ලකුණු",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: AppColor.colors[1].color,
+                )),
+          ]),
+          title: Text(
+            list[position],
+            style: TextStyle(
+              color: AppColor.colors[1].color,
+              fontSize: 20,
+            ),
+          ),
+        ),
       ),
     );
   }

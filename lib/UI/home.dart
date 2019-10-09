@@ -1,45 +1,67 @@
-// import 'package:edu_app/Datalayer/Database.dart';
-import 'package:flutter/material.dart';
-import 'package:edu_app/UI/drawer.dart';
+import 'package:edu_app/UI/colors.dart';
+import 'package:edu_app/UI/leaderboard.dart';
 import 'package:edu_app/UI/paper_home.dart';
-import 'package:edu_app/models/readPaper.dart';
+import 'package:edu_app/UI/progress.dart';
+import 'package:edu_app/UI/settings.dart';
+import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  HomePageState createState() => HomePageState();
+}
+
+class HomePageState extends State<HomePage> {
+  int _selectedPage = 0;
+  final _pages = [
+    RootPage(),
+    ProgressPage(),
+    LeaderboardPage(),
+    SettingsPage(),
+  ];
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-        drawer: Drawer(
-          child: buildDrawer(context, size),
-        ),
-        appBar: AppBar(
-          title: Text(
-            "පහේ පන්තිය",
-            style: TextStyle(
-              fontSize: size.height * 0.03,
+    return Scaffold(
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+            //background color of the BottomNavigationBar
+            canvasColor: AppColor.colors[1].color,
+            //active color of the BottomNavigationBar
+            primaryColor: Colors.white,
+            textTheme: Theme.of(context).textTheme.copyWith(
+                caption: new TextStyle(
+                    color: Colors
+                        .yellow))), //inactive color of the BottomNavigationBar
+        child: BottomNavigationBar(
+          selectedItemColor: AppColor.colors[2].color,
+          unselectedLabelStyle: TextStyle(color: Colors.black),
+          currentIndex: _selectedPage,
+          onTap: (int index) {
+            setState(() {
+              _selectedPage = index;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
             ),
-          ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.show_chart),
+                title: Text(
+                  'Progress',
+                )),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.insert_chart),
+              title: Text('Leaderboard'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text('Settings'),
+            ),
+          ],
         ),
-        body: FutureBuilder(
-            future: loadPaper(),
-            builder: (context, snapshot) {
-              return snapshot.data != null
-                  ? buildHome(snapshot.data, size, context)
-                  : Center(child: CircularProgressIndicator());
-            }),
       ),
-    );
-  }
-
-  Widget buildHome(paper, size, context) {
-    return Container(
-      child: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, position) {
-          return buildPaper(context, size, position, paper);
-        },
-      ),
+      body: _pages[_selectedPage],
     );
   }
 }

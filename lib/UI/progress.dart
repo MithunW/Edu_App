@@ -3,16 +3,12 @@ import 'package:flutter/material.dart';
 class ProgressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Progress'),
-        ),
-        body: Container(
-          child: buildScreen(),
-        ),
+    var size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Progress'),
       ),
+      body: Container(child: buildScreen()),
     );
   }
 
