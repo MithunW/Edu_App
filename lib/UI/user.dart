@@ -22,7 +22,7 @@ Widget buildUser(size, list, position) {
           ),
         ),
         trailing: Stack(children: [
-          Icon(Icons.favorite, color: Colors.pink, size: 24.0),
+          Icon(Icons.grade, color: Colors.pink, size: 24.0),
           Text("      ලකුණු",
               style: TextStyle(
                 fontSize: 20,
