@@ -1,3 +1,4 @@
+import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/models/readPaper.dart';
 import 'package:flutter/material.dart';
 
@@ -20,8 +21,8 @@ class RootPage extends StatelessWidget {
               ? Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      colorFilter: new ColorFilter.mode(
-                          Colors.black.withOpacity(0.9), BlendMode.dstATop),
+                      // colorFilter: new ColorFilter.mode(
+                      //     Colors.black.withOpacity(0.9), BlendMode.dstATop),
                       image: AssetImage('assets/images/bg.jpg'),
                       fit: BoxFit.fitHeight,
                     ),
@@ -45,16 +46,16 @@ class RootPage extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: Color.fromRGBO(30, 172, 80, 1),
+            color: AppColor.colors[1].color,
             //color: Color.fromRGBO(36, 209, 99, 0.9),
           ),
           color: Colors.white,
         ),
         child: ExpansionTile(
           title: Text(
-            'Paper ${position + 1}',
+            paper.data.qs[0].q.t,
             style: TextStyle(
-              color: Color.fromRGBO(30, 172, 80, 1),
+              color: AppColor.colors[1].color,
               fontSize: size.height * 0.025,
             ),
           ),
@@ -70,14 +71,14 @@ class RootPage extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         border: Border.all(
-                      color: Color.fromRGBO(30, 172, 80, 1),
+                      color: AppColor.colors[1].color,
                     )),
                     child: FlatButton(
                       color: Colors.white,
                       child: Text(
                         'Do the Paper',
                         style: TextStyle(
-                          color: Color.fromRGBO(30, 172, 80, 1),
+                          color: AppColor.colors[1].color,
                         ),
                       ),
                       onPressed: () {
@@ -91,14 +92,14 @@ class RootPage extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         border: Border.all(
-                      color: Color.fromRGBO(30, 172, 80, 1),
+                      color: AppColor.colors[1].color,
                     )),
                     child: FlatButton(
                       color: Colors.white,
                       child: Text(
                         'Review',
                         style: TextStyle(
-                          color: Color.fromRGBO(30, 172, 80, 1),
+                          color: AppColor.colors[1].color,
                         ),
                       ),
                       onPressed: () {},

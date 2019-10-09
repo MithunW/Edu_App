@@ -2,22 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:edu_app/Datalayer/Database.dart';
 
-
-
 Widget buildPaperProgress(size, list, position) {
-  var removeBottom;
-    return Padding(
-      padding: EdgeInsets.fromLTRB(size.width * 0.08, size.height * 0.02,
-          size.width * 0.08, size.height * 0.02),
-      child: Container(
-        
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Color.fromRGBO(36, 209, 99, 0.9),
-        ),
-        child: ExpansionTile(
-        
-        
+  return Padding(
+    padding: EdgeInsets.fromLTRB(size.width * 0.08, size.height * 0.02,
+        size.width * 0.08, size.height * 0.02),
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Color.fromRGBO(36, 209, 99, 0.9),
+      ),
+      child: ExpansionTile(
         title: Text(
           list[position],
           style: TextStyle(
@@ -56,19 +50,13 @@ class ProgressPage extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        // drawer: Drawer(
-        //   child: buildDrawer(context, size),
-        // ),
         appBar: AppBar(
           title: Text(
             "මගේ ප්‍රගතිය",
-            style: TextStyle(
-              fontSize: size.height * 0.03,
-            ),
           ),
         ),
         body: buildProgress(size),
-
+      ),
     );
   }
 
