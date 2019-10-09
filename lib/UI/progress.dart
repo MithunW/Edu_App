@@ -12,7 +12,7 @@ class ProgressPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "මගේ ප්‍රගතිය",
+            "මගේ ප්‍රගතිය | My Progress",
           ),
         ),
         body: Container(

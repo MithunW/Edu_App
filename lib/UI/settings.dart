@@ -7,7 +7,7 @@ class SettingsPage extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          title: Text('Settings'),
+          title: Text('සැකසුම් | Settings'),
         ),
         body: Container(child: buildScreen(context)));
   }

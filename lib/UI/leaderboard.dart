@@ -8,7 +8,7 @@ class LeaderboardPage extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('ප්‍රමුඛ පුවරුව | Leaderboard'),
       ),
       body: Container(
           decoration: BoxDecoration(
