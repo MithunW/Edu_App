@@ -3,6 +3,11 @@ import 'package:edu_app/Datalayer/paper.dart';
 import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/UI/quizfinish.dart';
 import 'package:flutter/material.dart';
+//TODO: FIXME
+//A bug occured during test run.
+//Timer was set to 90 minutes and after about 10-15 minutes execption occured.
+//It had something to do with tickerproviderstatemixin
+//Application didn't respond.
 
 class QuizPage extends StatefulWidget {
   final Paper paper;
