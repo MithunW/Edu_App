@@ -82,7 +82,7 @@ class RootPage extends StatelessWidget {
         ),
         onPressed: () {
           downloadFile(
-              'https://drive.google.com/uc?export=download&id=1Oq6c3gO7aQBequZcVACYZ_mXTia_GUzG',
+              'https://drive.google.com/uc?export=download&id=1rKxCuyHaKDE3V1ECuTsdjppe31QDQz4n',
               paper.name);
         },
       );
@@ -96,6 +96,9 @@ class RootPage extends StatelessWidget {
         ),
       ),
       onPressed: () {
+        // downloadFile(
+        //     'https://drive.google.com/uc?export=download&id=1rKxCuyHaKDE3V1ECuTsdjppe31QDQz4n',
+        //     paper.name);
         return showDialog(
           barrierDismissible: false,
           context: context,
@@ -108,7 +111,8 @@ class RootPage extends StatelessWidget {
               actions: <Widget>[
                 FlatButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, PaperScreen.routeName,
+                    Navigator.pushReplacementNamed(
+                        context, PaperScreen.routeName,
                         arguments: paper);
                   },
                   child: Text('ඔව්'),

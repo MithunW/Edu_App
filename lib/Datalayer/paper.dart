@@ -1,10 +1,14 @@
 class Paper {
   String id;
   List<Question> qs;
+  int htime;
+  int mtime;
 
   Paper({
     this.id,
     this.qs,
+    this.htime,
+    this.mtime,
   });
 
   factory Paper.fromJson(Map<String, dynamic> json) {
@@ -13,6 +17,8 @@ class Paper {
     return Paper(
       id: json["id"],
       qs: qsList,
+      htime: json["htime"],
+      mtime: json["mtime"],
     );
   }
 

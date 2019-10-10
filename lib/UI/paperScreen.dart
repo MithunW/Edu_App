@@ -1,7 +1,6 @@
-import 'package:edu_app/Datalayer/paper.dart';
 import 'package:edu_app/Datalayer/paperShowcase.dart';
-import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/Datalayer/models/readPaper.dart';
+import 'package:edu_app/UI/quizpage.dart';
 import 'package:flutter/material.dart';
 
 class PaperScreen extends StatelessWidget {
@@ -22,42 +21,10 @@ class PaperScreen extends StatelessWidget {
           return paper.data != null
               ? SafeArea(
                   child: Scaffold(
-                    body: ListView.builder(
-                      itemCount: paper.data.qs.length,
-                      itemBuilder: (context, i) {
-                        return _buildQuiz(i, paper, size);
-                      },
-                    ),
+                    body: QuizPage(paper: paper.data),
                   ),
                 )
               : Center(child: CircularProgressIndicator());
         });
-  }
-
-  Widget _buildQuiz(i, paper, size) {
-    return Column(
-      children: [
-        ListTile(
-          leading: Text(paper.data.qs[i].n.toString()),
-          title: Text(paper.data.qs[i].q.t),
-        ),
-        ListTile(
-          leading: Text(paper.data.qs[i].as[0].n.toString()),
-          title: Text(paper.data.qs[i].as[0].t),
-        ),
-        ListTile(
-          leading: Text(paper.data.qs[i].as[1].n.toString()),
-          title: Text(paper.data.qs[i].as[1].t),
-        ),
-        ListTile(
-          leading: Text(paper.data.qs[i].as[2].n.toString()),
-          title: Text(paper.data.qs[i].as[2].t),
-        ),
-        ListTile(
-          leading: Text(paper.data.qs[i].as[3].n.toString()),
-          title: Text(paper.data.qs[i].as[3].t),
-        ),
-      ],
-    );
   }
 }
