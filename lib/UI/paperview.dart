@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/Datalayer/Database.dart';
 import 'package:edu_app/UI/paperScreen.dart';
@@ -70,7 +72,7 @@ class RootPage extends StatelessWidget {
   }
 
   Widget createButton(paper, context) {
-    if (1 == 0) {
+    if (1==0) {
       // TODO: change the codition value to change the button action. should maitain a local db to see which papers are downloaded
       return FlatButton(
         color: Colors.white,
@@ -99,6 +101,7 @@ class RootPage extends StatelessWidget {
         // downloadFile(
         //     'https://drive.google.com/uc?export=download&id=1rKxCuyHaKDE3V1ECuTsdjppe31QDQz4n',
         //     paper.name);
+        
         return showDialog(
           barrierDismissible: false,
           context: context,

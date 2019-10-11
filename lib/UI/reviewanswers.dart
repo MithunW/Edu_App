@@ -1,4 +1,6 @@
 import 'package:edu_app/Datalayer/paper.dart';
+import 'package:edu_app/UI/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CheckAnswersPage extends StatelessWidget {
@@ -11,57 +13,93 @@ class CheckAnswersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Check Answers'),
-        elevation: 0,
-      ),
-      body: Stack(
-        children: <Widget>[
-          ListView.builder(
-            padding: const EdgeInsets.all(16.0),
-            itemCount: questions.length + 1,
-            itemBuilder: _buildItem,
-          )
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          CircleAvatar(
+            backgroundColor: AppColor.colors[2].color,
+            child: IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () => Navigator.pop(context ),
+            ),
+          ),
+          SizedBox(
+            width: size.width * 0.08,
+          ),
+          RaisedButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            color: AppColor.colors[2].color,
+            child: Text(
+              "Home",
+              style:
+                  TextStyle(color: Colors.black, fontSize: size.height * 0.020),
+            ),
+            onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
+          ),
         ],
+      ),
+      body: Container(
+        height: size.height,
+        width: size.width,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            stops: [0.1, 0.5, 0.7, 0.9],
+            colors: [
+              Colors.blue[800],
+              Colors.blue[700],
+              Colors.blue[600],
+              Colors.blue[400],
+            ],
+          ),
+        ),
+        child: Container(
+          padding: EdgeInsets.fromLTRB(size.width * 0.02, size.height * 0.08,
+              size.width * 0.01, size.height * 0.08),
+          child: ListView.builder(
+            padding: const EdgeInsets.all(16.0),
+            itemCount: questions.length,
+            itemBuilder: _buildItem,
+          ),
+        ),
       ),
     );
   }
 
   Widget _buildItem(BuildContext context, int index) {
-    if (index == questions.length) {
-      return RaisedButton(
-        child: Text("Done"),
-        onPressed: () {
-          Navigator.of(context)
-              .popUntil(ModalRoute.withName(Navigator.defaultRouteName));
-        },
-      );
-    }
+    Size size = MediaQuery.of(context).size;
+
     Question question = questions[index];
     bool correct = question.as[question.a - 1].t == answers[index];
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(size.height * 0.02),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              question.q.t,
+              " ${index + 1})  ${question.q.t})",
               style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.0),
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+                fontSize: size.height * 0.02,
+              ),
             ),
-            SizedBox(height: 5.0),
+            SizedBox(height: size.height * 0.03),
             Text(
               "${answers[index]}",
               style: TextStyle(
                   color: correct ? Colors.green : Colors.red,
-                  fontSize: 18.0,
+                  fontSize: size.height * 0.02,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 5.0),
+            SizedBox(height: size.height * 0.03),
             correct
                 ? Container()
                 : Text.rich(
@@ -71,7 +109,7 @@ class CheckAnswersPage extends StatelessWidget {
                           text: question.as[question.a - 1].t,
                           style: TextStyle(fontWeight: FontWeight.w500))
                     ]),
-                    style: TextStyle(fontSize: 16.0),
+                    style: TextStyle(fontSize: size.height * 0.02),
                   )
           ],
         ),

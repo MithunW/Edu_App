@@ -3,6 +3,7 @@ import 'package:edu_app/UI/home.dart';
 import 'package:edu_app/UI/onboarding.dart';
 import 'package:edu_app/UI/paperScreen.dart';
 import 'package:edu_app/UI/splash.dart';
+import 'package:edu_app/UI/winnerScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,6 +19,7 @@ void main() {
         '/onBoarding': (context) => OnBoardingPage(),
         '/home': (context) => HomePage(),
         PaperScreen.routeName: (context) => PaperScreen(),
+        '/winner': (context) => WinnerPage(),
       },
     ),
   );

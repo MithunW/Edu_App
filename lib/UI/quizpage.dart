@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 //It had something to do with tickerproviderstatemixin
 //Application didn't respond.
 
+//Another bug on timer submit throws an exception.
+
 class QuizPage extends StatefulWidget {
   final Paper paper;
 
@@ -18,29 +20,32 @@ class QuizPage extends StatefulWidget {
   _QuizPageState createState() => _QuizPageState();
 }
 
-class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
+class _QuizPageState extends State<QuizPage>
+    with SingleTickerProviderStateMixin {
   AnimationController controller;
   int _currentIndex = 0;
   int timer;
+  int correct = 0;
   bool canceltimer = false;
   final Map<int, dynamic> _answers = {};
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
   void initState() {
     super.initState();
-
     controller = AnimationController(
       vsync: this,
       duration:
           // Duration(hours: widget.paper.htime, minutes: widget.paper.mtime),
           Duration(seconds: 20),
     );
+    controller.reverse(from: 1.0);
   }
 
   @override
   Widget build(BuildContext context) {
     starttimer();
-    controller.reverse(from: controller.value == 0.0 ? 1.0 : controller.value);
+
+    //reverse(from: controller.value == 0.0 ? 1.0 : controller.value);
     Size size = MediaQuery.of(context).size;
     Question question = widget.paper.qs[_currentIndex];
     final List<Answer> options = question.as;
@@ -288,20 +293,42 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
       return;
     } else if (_currentIndex == (widget.paper.qs.length - 1)) {
       canceltimer = true;
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) =>
-              QuizFinishedPage(questions: widget.paper.qs, answers: _answers)));
+      Future.delayed(const Duration(milliseconds: 500), () {
+        setState(() {
+          nextPage();
+        });
+      });
     }
+  }
+
+  void nextPage() {
+    // _answers.forEach((index, value) {
+    //   if (widget.paper.qs[index].as[widget.paper.qs[index].a - 1].t == value)
+    //     correct++;
+    // });
+    // controller.dispose();
+    // if (correct == widget.paper.qs.length) {
+    //   Navigator.pushReplacementNamed(
+    //     context,
+    //     '/winner',
+    //     arguments: {widget.paper.qs, _answers},
+    //   );
+    // } else {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) =>
+            QuizFinishedPage(questions: widget.paper.qs, answers: _answers)));
+    // }
   }
 
   void _submitTimer() {
     _key.currentState.showSnackBar(SnackBar(
       content: Text("Time is Up !"),
     ));
-    canceltimer = true;
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) =>
-            QuizFinishedPage(questions: widget.paper.qs, answers: _answers)));
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      setState(() {
+        nextPage();
+      });
+    });
   }
 
   Future<bool> _onWillPop() async {
@@ -317,6 +344,7 @@ class _QuizPageState extends State<QuizPage> with TickerProviderStateMixin {
                 child: Text("Yes"),
                 onPressed: () {
                   canceltimer = true;
+                  controller.dispose();
                   Navigator.pop(context, true);
                 },
               ),
