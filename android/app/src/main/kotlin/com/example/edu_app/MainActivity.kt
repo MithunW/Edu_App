@@ -1,4 +1,4 @@
-package com.example.edu_app
+package com.techlabs.Grade5
 
 import android.os.Bundle
 

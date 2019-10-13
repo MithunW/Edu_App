@@ -20,13 +20,3 @@ Future loadPaper(paperName) async {
   Paper paper = new Paper.fromJson(jsonResponse);
   return (paper);
 }
-
-// bool checkforPaper(name) {
-//   String path = _localPath.toString();
-//   try {
-//     String paperasset = rootBundle.loadString('$path/$name').toString();
-//   } on Exception catch (_) {
-//     return false;
-//   }
-//   return true;
-// }

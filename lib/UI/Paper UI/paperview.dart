@@ -5,6 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:edu_app/Datalayer/models/downloadPaper.dart';
 
+//This page is where all the papers are listed.
+
+//Added cupertino ios routing animation through creating a routing class
 class PaperPageRoute extends CupertinoPageRoute {
   PaperPageRoute() : super(builder: (BuildContext context) => new PaperPage());
 
@@ -19,12 +22,11 @@ class PaperPage extends StatelessWidget {
   final Database db = new Database();
   @override
   Widget build(BuildContext context) {
-    precacheImage(AssetImage('assets/images/bg.jpg'), context);
     List list = db.getPapers();
-    var size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size; //Get current device size 
     return Scaffold(
         appBar: AppBar(
-          title: Text('පහේ පන්තිය | Grade 5'),
+          title: Text('Papers'),
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -43,7 +45,7 @@ class PaperPage extends StatelessWidget {
           child: ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, position) {
-              return buildPapers(context, size, list[position]);
+              return buildPapers(context, size, list[position]); //builds paper per item in the list from db
             },
           ),
         ));
