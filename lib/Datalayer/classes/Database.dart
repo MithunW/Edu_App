@@ -1,6 +1,9 @@
 import 'package:edu_app/Datalayer/classes/paperShowcase.dart';
 
+
 class Database {
+  // Access a Cloud Firestore instance from your Activity
+
   List<PaperShowcase> getPapers() {
     List list = new List<PaperShowcase>();
     int counter = 1;
