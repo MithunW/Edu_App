@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "905200211370",
+    "firebase_url": "https://grade-5-4016d.firebaseio.com",
+    "project_id": "grade-5-4016d",
+    "storage_bucket": "grade-5-4016d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905200211370:android:368daa31855cb1b99087d3",
+        "android_client_info": {
+          "package_name": "com.techlabs.Grade5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905200211370-i6g2jsto62aibff3tdgpu0n4ra0191t3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDa0KXQS8UbefqeVGaWvZbBU61U_vUgl84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905200211370-i6g2jsto62aibff3tdgpu0n4ra0191t3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
