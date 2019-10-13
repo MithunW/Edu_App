@@ -1,6 +1,18 @@
-import 'package:edu_app/Datalayer/Database.dart';
+import 'package:edu_app/Datalayer/classes/Database.dart';
 import 'package:edu_app/UI/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+class LeaderboardPageRoute extends CupertinoPageRoute {
+  LeaderboardPageRoute()
+      : super(builder: (BuildContext context) => new LeaderboardPage());
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return new FadeTransition(opacity: animation, child: new LeaderboardPage());
+  }
+}
 
 class LeaderboardPage extends StatelessWidget {
   @override

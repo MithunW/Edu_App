@@ -1,4 +1,4 @@
-import 'package:edu_app/Datalayer/paper.dart';
+import 'package:edu_app/Datalayer/classes/paper.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';

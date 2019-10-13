@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'package:edu_app/Datalayer/paper.dart';
+import 'package:edu_app/Datalayer/classes/paper.dart';
 import 'package:edu_app/UI/colors.dart';
-import 'package:edu_app/UI/quizfinish.dart';
+import 'package:edu_app/UI/Paper UI/quizfinish.dart';
 import 'package:flutter/material.dart';
 //TODO: FIXME
 //A bug occured during test run.
@@ -36,7 +36,7 @@ class _QuizPageState extends State<QuizPage>
       vsync: this,
       duration:
           // Duration(hours: widget.paper.htime, minutes: widget.paper.mtime),
-          Duration(seconds: 20),
+          Duration(seconds: 100),
     );
     controller.reverse(from: 1.0);
   }
@@ -87,7 +87,7 @@ class _QuizPageState extends State<QuizPage>
                         color: AppColor.colors[2].color,
                       ),
                       height: size.height * 0.07,
-                      width: size.width * 0.8,
+                      width: size.width * 0.85,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -105,7 +105,7 @@ class _QuizPageState extends State<QuizPage>
                             ),
                             alignment: Alignment.center,
                             height: size.height * 0.05,
-                            width: size.width * 0.25,
+                            width: size.width * 0.3,
                             child: AnimatedBuilder(
                                 animation: controller,
                                 builder: (BuildContext context, Widget child) {
@@ -243,12 +243,12 @@ class _QuizPageState extends State<QuizPage>
 
   String get timerString {
     Duration duration = controller.duration * controller.value;
-    //return '${duration.inHours}:${(duration.inMinutes % 60).toString().padLeft(2, '0')}';
-    return '${duration.inMinutes}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
+    return '${(duration.inHours % 60).toString().padLeft(2, '0')}:${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
+    //return '${duration.inMinutes}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
   void starttimer() {
-    timer = 20;
+    timer = 100;
     //timer = (widget.paper.htime * 60 * 60) + (widget.paper.mtime * 60);
     const onesec = Duration(seconds: 1);
     Timer.periodic(onesec, (Timer t) {

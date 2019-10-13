@@ -1,6 +1,6 @@
-import 'package:edu_app/Datalayer/paper.dart';
+import 'package:edu_app/Datalayer/classes/paper.dart';
 import 'package:edu_app/UI/colors.dart';
-import 'package:edu_app/UI/reviewanswers.dart';
+import 'package:edu_app/UI/Paper UI/reviewanswers.dart';
 import 'package:flutter/material.dart';
 
 class QuizFinishedPage extends StatelessWidget {
@@ -133,7 +133,7 @@ class QuizFinishedPage extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.black, fontSize: size.height * 0.020),
                     ),
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
                   ),
                 ],
               )

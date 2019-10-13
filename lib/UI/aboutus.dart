@@ -1,4 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+class AboutUsPageRoute extends CupertinoPageRoute {
+  AboutUsPageRoute()
+      : super(builder: (BuildContext context) => new AboutUsPage());
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return new FadeTransition(opacity: animation, child: new AboutUsPage());
+  }
+}
 
 class AboutUsPage extends StatelessWidget {
   @override

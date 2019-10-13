@@ -1,4 +1,4 @@
-import 'package:edu_app/Datalayer/paper.dart';
+import 'package:edu_app/Datalayer/classes/paper.dart';
 import 'package:edu_app/UI/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class CheckAnswersPage extends StatelessWidget {
             backgroundColor: AppColor.colors[2].color,
             child: IconButton(
               icon: Icon(Icons.arrow_back_ios),
-              onPressed: () => Navigator.pop(context ),
+              onPressed: () => Navigator.pop(context),
             ),
           ),
           SizedBox(
@@ -93,7 +93,9 @@ class CheckAnswersPage extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.03),
             Text(
-              "${answers[index]}",
+              (answers[index] == null)
+                  ? "You didn't provide an answer"
+                  : "${answers[index]}",
               style: TextStyle(
                   color: correct ? Colors.green : Colors.red,
                   fontSize: size.height * 0.02,

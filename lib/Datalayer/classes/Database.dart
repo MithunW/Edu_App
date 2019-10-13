@@ -1,4 +1,4 @@
-import 'package:edu_app/Datalayer/paperShowcase.dart';
+import 'package:edu_app/Datalayer/classes/paperShowcase.dart';
 
 class Database {
   List<PaperShowcase> getPapers() {

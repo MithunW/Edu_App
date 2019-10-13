@@ -1,7 +1,19 @@
 import 'package:edu_app/UI/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:edu_app/Datalayer/Database.dart';
+import 'package:edu_app/Datalayer/classes/Database.dart';
+
+class ProgressPageRoute extends CupertinoPageRoute {
+  ProgressPageRoute()
+      : super(builder: (BuildContext context) => new ProgressPage());
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return new FadeTransition(opacity: animation, child: new ProgressPage());
+  }
+}
 
 class ProgressPage extends StatelessWidget {
   @override
@@ -17,9 +29,20 @@ class ProgressPage extends StatelessWidget {
         ),
         body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/leaderbg.jpg'),
-              fit: BoxFit.fitHeight,
+            // image: DecorationImage(
+            //   image: AssetImage('assets/images/leaderbg.jpg'),
+            //   fit: BoxFit.fitHeight,
+            // ),
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              stops: [0.1, 0.5, 0.7, 0.9],
+              colors: [
+                AppColor.colors[1].color,
+                AppColor.colors[3].color,
+                AppColor.colors[3].color,
+                AppColor.colors[3].color,
+              ],
             ),
           ),
           child: buildProgress(size),
@@ -47,7 +70,7 @@ class ProgressPage extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: AppColor.colors[1].color,
+          color: AppColor.colors[0].color,
         ),
         child: ExpansionTile(
           title: Text(

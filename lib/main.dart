@@ -1,9 +1,8 @@
 import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/UI/home.dart';
-import 'package:edu_app/UI/onboarding.dart';
-import 'package:edu_app/UI/paperScreen.dart';
+import 'package:edu_app/UI/Onboarding/onboarding.dart';
+import 'package:edu_app/UI/Paper UI/paperScreen.dart';
 import 'package:edu_app/UI/splash.dart';
-import 'package:edu_app/UI/winnerScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +10,7 @@ void main() {
     MaterialApp(
       title: "පහේ පන්තිය",
       theme: ThemeData(
-          primaryColor: AppColor.colors[1].color,
+          primaryColor: AppColor.colors[0].color,
           primaryColorDark: AppColor.colors[0].color),
       initialRoute: '/',
       routes: {
@@ -19,7 +18,6 @@ void main() {
         '/onBoarding': (context) => OnBoardingPage(),
         '/home': (context) => HomePage(),
         PaperScreen.routeName: (context) => PaperScreen(),
-        '/winner': (context) => WinnerPage(),
       },
     ),
   );

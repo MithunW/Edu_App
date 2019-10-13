@@ -1,6 +1,6 @@
-import 'package:edu_app/Datalayer/paperShowcase.dart';
+import 'package:edu_app/Datalayer/classes/paperShowcase.dart';
 import 'package:edu_app/Datalayer/models/readPaper.dart';
-import 'package:edu_app/UI/quizpage.dart';
+import 'package:edu_app/UI/Paper UI/quizpage.dart';
 import 'package:flutter/material.dart';
 
 class PaperScreen extends StatelessWidget {

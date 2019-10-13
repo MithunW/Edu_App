@@ -1,5 +1,17 @@
 import 'package:edu_app/UI/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+class SettingsPageRoute extends CupertinoPageRoute {
+  SettingsPageRoute()
+      : super(builder: (BuildContext context) => new SettingsPage());
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return new FadeTransition(opacity: animation, child: new SettingsPage());
+  }
+}
 
 class SettingsPage extends StatelessWidget {
   @override
