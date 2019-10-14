@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/Datalayer/classes/Database.dart';
 import 'package:edu_app/UI/Paper UI/paperScreen.dart';
@@ -19,6 +22,7 @@ class PaperPageRoute extends CupertinoPageRoute {
 }
 
 class PaperPage extends StatelessWidget {
+  bool isOffline = false;
   final Database db = new Database();
   @override
   Widget build(BuildContext context) {
@@ -147,9 +151,8 @@ Widget createButton(paper, context) {
         color: AppColor.colors[1].color,
       ),
     ),
-    onPressed: () {
-      downloadFile(paper.url, paper.name);
-
+    onPressed: () async {
+      await downloadFile(paper.url, paper.name);
       return showDialog(
         barrierDismissible: false,
         context: context,
