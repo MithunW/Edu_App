@@ -1,3 +1,4 @@
+import 'package:edu_app/UI/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'onboardingScreens.dart';
@@ -57,16 +58,20 @@ class OnBoardingPageState extends State<OnBoardingPage> {
                   ? true
                   : false,
               child: Align(
-                alignment: Alignment.bottomRight,
+                alignment: Alignment.center,
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0.0, 0.0, 30.0, 30.0),
-                  child: FloatingActionButton(
+                  child: FloatingActionButton.extended(
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/home');
                     },
-                    shape: BeveledRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(26))),
-                    child: Text('ආරම්භ කරන්න'), //Icon(Icons.arrow_forward),
+                    backgroundColor: AppColor.colors[1].color,
+                    label: Text(
+                      'ආරම්භ කරන්න',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ), //Icon(Icons.arrow_forward),
                   ),
                 ),
               ),
@@ -89,7 +94,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       height: isActive ? 12 : 8,
       width: isActive ? 12 : 8,
       decoration: BoxDecoration(
-          color: isActive ? Colors.orange : Colors.grey,
+          color: isActive ? Colors.blue[900] : Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(12))),
     );
   }
