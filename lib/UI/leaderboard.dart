@@ -33,8 +33,9 @@ class LeaderboardPage extends StatelessWidget {
   }
 
   Widget buildScreen(context) {
+    Database db = Database();
     var size = MediaQuery.of(context).size;
-    List list = Database.getUsers();
+    List list = db.getUsers();
     return Container(
       child: Stack(
         children: [

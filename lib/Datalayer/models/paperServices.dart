@@ -11,15 +11,15 @@ Future<File> downloadFile(String url, String filename) async {
   var request = await httpClient.getUrl(Uri.parse(url));
   var response = await request.close();
   var bytes = await consolidateHttpClientResponseBytes(response);
-  String dir = (await getExternalStorageDirectory())
-      .path; //getApplicationDocumentsDirectory for internal one. can't see from file manager
+  String dir = (await getApplicationDocumentsDirectory())
+      .path; //getApplicationDocumentsDirectory getExternalStorageDirectory for internal one. can't see from file manager
   File file = new File('$dir/$filename');
   await file.writeAsBytes(bytes);
   return file;
 }
 
 Future<String> get _localPath async {
-  final directory = await getExternalStorageDirectory();
+  final directory = await getApplicationDocumentsDirectory();
   return directory.path;
 }
 
