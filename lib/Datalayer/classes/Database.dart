@@ -1,26 +1,23 @@
 import 'package:edu_app/Datalayer/classes/paperShowcase.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Database {
   // Access a Cloud Firestore instance from your Activity
+  final databaseReference = Firestore.instance;
 
-  List<PaperShowcase> getPapers() {
+  Future<List> getPapers() async {
     List list = new List<PaperShowcase>();
-    int counter = 1;
-    do {
-      PaperShowcase paper = new PaperShowcase();
-
-      //TODO: need to implement a method get the details from the Papers table in db and
-      //create papershowcase object(used only to show the available papers)
-      // and return them as a list to the home view
-
-      paper.setId(counter.toString());
-      paper.setUrl('url here');
-      paper.setName('paper$counter.json');
-      list.add(paper);
-      counter++;
-    } while (counter < 11);
-
+    await databaseReference
+        .collection("papers")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((f) {
+        PaperShowcase paper = new PaperShowcase();
+        paper.setName(f.data['name']);
+        paper.setUrl(f.data['url']);
+        list.add(paper);
+      });
+    });
     return list;
   }
 

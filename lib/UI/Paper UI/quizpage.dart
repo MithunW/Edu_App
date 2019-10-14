@@ -244,7 +244,6 @@ class _QuizPageState extends State<QuizPage>
   String get timerString {
     Duration duration = controller.duration * controller.value;
     return '${(duration.inHours % 60).toString().padLeft(2, '0')}:${(duration.inMinutes % 60).toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-    //return '${duration.inMinutes}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
   }
 
   void starttimer() {
@@ -302,22 +301,9 @@ class _QuizPageState extends State<QuizPage>
   }
 
   void nextPage() {
-    // _answers.forEach((index, value) {
-    //   if (widget.paper.qs[index].as[widget.paper.qs[index].a - 1].t == value)
-    //     correct++;
-    // });
-    // controller.dispose();
-    // if (correct == widget.paper.qs.length) {
-    //   Navigator.pushReplacementNamed(
-    //     context,
-    //     '/winner',
-    //     arguments: {widget.paper.qs, _answers},
-    //   );
-    // } else {
     Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) =>
             QuizFinishedPage(questions: widget.paper.qs, answers: _answers)));
-    // }
   }
 
   void _submitTimer() {
