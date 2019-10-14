@@ -5,7 +5,7 @@ import 'package:edu_app/Datalayer/Database.dart';
 
 
 Widget buildPaperProgress(size, list, position) {
-  var removeBottom;
+  
     return Padding(
       padding: EdgeInsets.fromLTRB(size.width * 0.08, size.height * 0.02,
           size.width * 0.08, size.height * 0.02),
