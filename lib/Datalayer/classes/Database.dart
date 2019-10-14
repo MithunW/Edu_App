@@ -15,6 +15,9 @@ class Database {
         PaperShowcase paper = new PaperShowcase();
         paper.setName(f.data['name']);
         paper.setUrl(f.data['url']);
+        paper.setNumber(f.data['number']);
+        paper.setmTime(f.data['mTime']);
+        paper.sethTime(f.data['hTime']);
         list.add(paper);
       });
     });

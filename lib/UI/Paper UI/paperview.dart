@@ -3,7 +3,7 @@ import 'package:edu_app/Datalayer/classes/Database.dart';
 import 'package:edu_app/UI/Paper UI/paperScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:edu_app/Datalayer/models/downloadPaper.dart';
+import 'package:edu_app/Datalayer/models/paperServices.dart';
 
 //This page is where all the papers are listed.
 
@@ -22,7 +22,6 @@ class PaperPage extends StatelessWidget {
   final Database db = new Database();
   @override
   Widget build(BuildContext context) {
-    //Future<List> list = db.getPapers();
     var size = MediaQuery.of(context).size; //Get current device size
     return Scaffold(
       appBar: AppBar(
@@ -44,23 +43,49 @@ class PaperPage extends StatelessWidget {
         ),
         child: FutureBuilder(
           future: db.getPapers(),
-          builder: (context, projectSnap) {
-            if (projectSnap.connectionState == ConnectionState.none &&
-                projectSnap.hasData == null) {
-              return Container(
-                child: Text('No Papers to show'),
-              );
+          builder: (context, paperSnap) {
+            switch (paperSnap.connectionState) {
+              case ConnectionState.none:
+                return Text('No Papers to show');
+              case ConnectionState.active:
+              case ConnectionState.waiting:
+                return Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    size.width * 0.35,
+                    size.height * 0.425,
+                    size.width * 0.35,
+                    size.height * 0.425,
+                  ),
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: size.height * 0.05,
+                    width: size.width * 0.3,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: AppColor.colors[1].color,
+                        //color: Color.fromRGBO(36, 209, 99, 0.9),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: Text('Loading Papers'),
+                  ),
+                );
+              case ConnectionState.done:
+                if (paperSnap.hasError)
+                  return Text('Error: ${paperSnap.error}');
+                return ListView.builder(
+                  itemCount: paperSnap.data.length,
+                  itemBuilder: (context, position) {
+                    return buildPapers(
+                      context,
+                      size,
+                      paperSnap.data[position],
+                    ); //builds paper per item in the list from db
+                  },
+                );
             }
-            return ListView.builder(
-              itemCount: projectSnap.data.length,
-              itemBuilder: (context, position) {
-                return buildPapers(
-                  context,
-                  size,
-                  projectSnap.data[position],
-                ); //builds paper per item in the list from db
-              },
-            );
+            return null; // unreachable
           },
         ),
       ),
@@ -83,16 +108,22 @@ Widget buildPapers(context, size, paper) {
       ),
       child: ExpansionTile(
         title: Text(
-          'පෙරහුරු ප්‍රශ්න ප්‍රත්‍ර අංක ${paper.name}', // paper id here
+          'පෙරහුරු ප්‍රශ්න ප්‍රත්‍ර අංක ${paper.number}', // paper id here
           style: TextStyle(
             color: AppColor.colors[1].color,
             fontSize: size.height * 0.02,
           ),
         ),
         children: [
+          Text(
+            'කාලය : පැය ${paper.hTime} මිනිත්තු ${paper.mTime}',
+            style: TextStyle(
+              color: AppColor.colors[1].color,
+            ),
+          ),
           Padding(
             padding: EdgeInsets.fromLTRB(
-                0.0, size.height * 0.06, 0.0, size.height * 0.06),
+                0.0, size.height * 0.02, 0.0, size.height * 0.06),
             child: Container(
               decoration: BoxDecoration(
                   border: Border.all(
@@ -117,9 +148,7 @@ Widget createButton(paper, context) {
       ),
     ),
     onPressed: () {
-      downloadFile(
-          'https://drive.google.com/uc?export=download&id=1rKxCuyHaKDE3V1ECuTsdjppe31QDQz4n',
-          paper.name);
+      downloadFile(paper.url, paper.name);
 
       return showDialog(
         barrierDismissible: false,

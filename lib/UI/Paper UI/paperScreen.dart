@@ -1,5 +1,5 @@
 import 'package:edu_app/Datalayer/classes/paperShowcase.dart';
-import 'package:edu_app/Datalayer/models/readPaper.dart';
+import 'package:edu_app/Datalayer/models/paperServices.dart';
 import 'package:edu_app/UI/Paper UI/quizpage.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +14,9 @@ class PaperScreen extends StatelessWidget {
     );
   }
 
-  Widget buildPaperScreen(size, context, paperdetails) {
+  Widget buildPaperScreen(size, context, paper) {
     return FutureBuilder(
-        future: loadPaper(paperdetails.name),
+        future: loadPaper(paper.name),
         builder: (context, paper) {
           return paper.data != null
               ? SafeArea(
