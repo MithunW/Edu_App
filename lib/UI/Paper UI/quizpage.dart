@@ -206,7 +206,7 @@ class _QuizPageState extends State<QuizPage>
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
-                          SizedBox(width: size.width * 0.05),
+                          SizedBox(width: size.width * 0.045),
                           IconButton(
                             icon: _currentIndex == (widget.paper.qs.length - 1)
                                 ? Icon(null)
