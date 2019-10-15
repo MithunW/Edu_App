@@ -198,7 +198,7 @@ class _QuizPageState extends State<QuizPage>
                             color: AppColor.colors[1].color,
                             onPressed: _previous,
                           ),
-                          SizedBox(width: size.width * 0.05),
+                          SizedBox(width: size.width * 0.035),
                           CircleAvatar(
                             backgroundColor: AppColor.colors[1].color,
                             child: Text(
@@ -206,7 +206,7 @@ class _QuizPageState extends State<QuizPage>
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
-                          SizedBox(width: size.width * 0.045),
+                          SizedBox(width: size.width * 0.035),
                           IconButton(
                             icon: _currentIndex == (widget.paper.qs.length - 1)
                                 ? Icon(null)
