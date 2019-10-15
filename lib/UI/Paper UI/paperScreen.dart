@@ -1,5 +1,4 @@
 import 'package:edu_app/Datalayer/classes/paperShowcase.dart';
-import 'package:edu_app/Datalayer/models/paperServices.dart';
 import 'package:edu_app/UI/Paper UI/quizpage.dart';
 import 'package:edu_app/UI/colors.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class PaperScreen extends StatelessWidget {
 
   Widget buildPaperScreen(size, context, paper) {
     return FutureBuilder(
-        future: loadPaper(paper.name),
+        future: paper.loadPaper(paper.name),
         builder: (context, paper) {
           switch (paper.connectionState) {
             case ConnectionState.none:

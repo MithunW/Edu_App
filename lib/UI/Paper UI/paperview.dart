@@ -1,12 +1,8 @@
-import 'dart:async';
-import 'dart:io';
-
 import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/Datalayer/classes/Database.dart';
 import 'package:edu_app/UI/Paper UI/paperScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:edu_app/Datalayer/models/paperServices.dart';
 
 //This page is where all the papers are listed.
 
@@ -152,7 +148,9 @@ Widget createButton(paper, context) {
       ),
     ),
     onPressed: () async {
-      await downloadFile(paper.url, paper.name);
+      if (!(await paper.checkPaper(paper.name))) {
+        await paper.downloadFile(paper.url, paper.name);
+      }
       return showDialog(
         barrierDismissible: false,
         context: context,

@@ -1,7 +1,6 @@
 import 'package:edu_app/Datalayer/classes/paperShowcase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:edu_app/Datalayer/classes/user.dart';
-import 'package:edu_app/Datalayer/models/checkUser.dart';
 
 class Database {
   // Access a Cloud Firestore instance from your Activity
