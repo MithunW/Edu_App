@@ -42,6 +42,12 @@ class _QuizPageState extends State<QuizPage>
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     starttimer();
 
@@ -302,8 +308,6 @@ class _QuizPageState extends State<QuizPage>
 
   void nextPage() {
     canceltimer = true;
-    // super.dispose();
-    // controller.dispose();
     Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) =>
             QuizFinishedPage(questions: widget.paper.qs, answers: _answers)));
@@ -333,7 +337,7 @@ class _QuizPageState extends State<QuizPage>
                 child: Text("Yes"),
                 onPressed: () {
                   canceltimer = true;
-                  controller.dispose();
+
                   Navigator.pop(context, true);
                 },
               ),

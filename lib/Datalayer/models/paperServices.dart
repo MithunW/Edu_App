@@ -1,6 +1,5 @@
 import 'package:edu_app/Datalayer/classes/paper.dart';
 import 'dart:async' show Future;
-import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
@@ -38,3 +37,9 @@ Future loadPaper(paperName) async {
   Paper paper = new Paper.fromJson(jsonResponse);
   return (paper);
 }
+
+// bool checkPaper(paperName) async {
+//   String path = await _localPath;
+//   File file1 = new File('$path/$paperName');
+//   file1.exists()
+// }

@@ -7,6 +7,8 @@ class Page1 extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
+        height: size.height,
+        width: size.width,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
