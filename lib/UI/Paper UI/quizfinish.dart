@@ -2,19 +2,21 @@ import 'package:edu_app/Datalayer/classes/paper.dart';
 import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/UI/Paper UI/reviewanswers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class QuizFinishedPage extends StatelessWidget {
   final List<Question> questions;
   final Map<int, dynamic> answers;
   final Paper paper;
+  bool firsttime = false;
 
   int correctAnswers;
-  QuizFinishedPage(
-      {Key key,
-      @required this.questions,
-      @required this.answers,
-      @required this.paper})
-      : super(key: key);
+  QuizFinishedPage({
+    Key key,
+    @required this.questions,
+    @required this.answers,
+    @required this.paper,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +26,8 @@ class QuizFinishedPage extends StatelessWidget {
       if (this.questions[index].as[questions[index].a - 1].t == value)
         correct++;
     });
-    this.paper.saveAnswers(this.answers, correct);
     String user = '0779195992';
+    this.paper.saveAnswers(this.answers, correct);
     this.paper.updateScore(user, correct);
     final TextStyle titleStyle = TextStyle(
         color: Colors.black87, fontSize: 22.0, fontWeight: FontWeight.w500);
@@ -131,19 +133,6 @@ class QuizFinishedPage extends StatelessWidget {
                   SizedBox(
                     height: size.height * 0.02,
                   ),
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    color: AppColor.colors[2].color,
-                    child: Text(
-                      "Home",
-                      style: TextStyle(
-                          color: Colors.black, fontSize: size.height * 0.020),
-                    ),
-                    onPressed: () =>
-                        Navigator.pushReplacementNamed(context, '/home'),
-                  ),
                 ],
               )
             ],
@@ -151,5 +140,10 @@ class QuizFinishedPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void firstTimeInit(user) async {
+    bool b = await paper.checkFirstTime(user);
+    this.firsttime = b;
   }
 }

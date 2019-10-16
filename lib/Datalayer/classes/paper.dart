@@ -38,6 +38,11 @@ class Paper {
     db.updateLeaderboard(user, correct);
   }
 
+  Future<bool> checkFirstTime(user) async {
+    Database db = new Database();
+    return await db.firstTime(user, this.id);
+  }
+
   void setId(String id) {
     this.id = id;
   }

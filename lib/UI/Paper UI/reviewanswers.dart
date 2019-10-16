@@ -30,17 +30,17 @@ class CheckAnswersPage extends StatelessWidget {
             width: size.width * 0.08,
           ),
           RaisedButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            color: AppColor.colors[2].color,
-            child: Text(
-              "Home",
-              style:
-                  TextStyle(color: Colors.black, fontSize: size.height * 0.020),
-            ),
-            onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
-          ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              color: AppColor.colors[2].color,
+              child: Text(
+                "Home",
+                style: TextStyle(
+                    color: Colors.black, fontSize: size.height * 0.020),
+              ),
+              onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                  context, '/home', (r) => false)),
         ],
       ),
       body: Container(

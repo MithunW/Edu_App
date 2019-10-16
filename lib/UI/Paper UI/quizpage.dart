@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:typed_data';
 import 'package:edu_app/Datalayer/classes/paper.dart';
 import 'package:edu_app/UI/colors.dart';
 import 'package:edu_app/UI/Paper UI/quizfinish.dart';
@@ -36,8 +38,9 @@ class _QuizPageState extends State<QuizPage>
       vsync: this,
       duration:
           // Duration(hours: widget.paper.htime, minutes: widget.paper.mtime),
-          Duration(seconds: 100),
+          Duration(seconds: 10),
     );
+    starttimer();
     controller.reverse(from: 1.0);
   }
 
@@ -49,13 +52,14 @@ class _QuizPageState extends State<QuizPage>
 
   @override
   Widget build(BuildContext context) {
-    starttimer();
-
     //reverse(from: controller.value == 0.0 ? 1.0 : controller.value);
     Size size = MediaQuery.of(context).size;
     Question question = widget.paper.qs[_currentIndex];
     final List<Answer> options = question.as;
-
+    Uint8List bytes;
+    if (question.q.i != "") {
+      bytes = base64.decode(question.q.i);
+    }
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -138,55 +142,6 @@ class _QuizPageState extends State<QuizPage>
                     SizedBox(
                       height: size.height * 0.025,
                     ),
-                    CircleAvatar(
-                      backgroundColor: Colors.white70,
-                      child: Text("${_currentIndex + 1}"),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.01,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        SizedBox(width: size.width * 0.05),
-                        Expanded(
-                          child: Text(
-                            widget.paper.qs[_currentIndex].q.t,
-                            style: TextStyle(
-                                fontSize: size.height * 0.02,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: size.height * 0.03),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(40.0)),
-                      child: Card(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            ...options.map(
-                              (option) => Container(
-                                  child: RadioListTile(
-                                title: Text("${option.t}"),
-                                groupValue: _answers[_currentIndex],
-                                value: option.t,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _answers[_currentIndex] = option.t;
-                                  });
-                                },
-                              )),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.03,
-                    ),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
@@ -237,6 +192,55 @@ class _QuizPageState extends State<QuizPage>
                             )
                           : null,
                     ),
+                    SizedBox(
+                      height: size.height * 0.025,
+                    ),
+                    SizedBox(width: size.width * 0.05),
+                    Expanded(
+                      child: Container(
+                        color: Colors.white,
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: <Widget>[
+                            Text(
+                              widget.paper.qs[_currentIndex].q.t,
+                              style: TextStyle(
+                                  fontSize: size.height * 0.02,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black),
+                            ),
+                            ...options.map(
+                              (option) => Column(
+                                children: [
+                                  RadioListTile(
+                                    title: Text("${option.t}"),
+                                    groupValue: _answers[_currentIndex],
+                                    value: option.t,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _answers[_currentIndex] = option.t;
+                                      });
+                                    },
+                                  ),
+                                  Container(
+                                    child: (bytes != null)
+                                        ? Image.memory(
+                                            bytes,
+                                            height: size.height * 0.15,
+                                            width: size.width * 0.15,
+                                          )
+                                        : Container(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: size.height * 0.03,
+                    ),
                   ],
                 ),
               ),
@@ -253,7 +257,7 @@ class _QuizPageState extends State<QuizPage>
   }
 
   void starttimer() {
-    timer = 100;
+    timer = 10;
     //timer = (widget.paper.htime * 60 * 60) + (widget.paper.mtime * 60);
     const onesec = Duration(seconds: 1);
     Timer.periodic(onesec, (Timer t) {
@@ -277,12 +281,6 @@ class _QuizPageState extends State<QuizPage>
   }
 
   void _next() {
-    if (_answers[_currentIndex] == null) {
-      _key.currentState.showSnackBar(SnackBar(
-        content: Text("You must select an answer to continue."),
-      ));
-      return;
-    }
     if (_currentIndex < (widget.paper.qs.length - 1)) {
       setState(() {
         _currentIndex++;
@@ -291,12 +289,7 @@ class _QuizPageState extends State<QuizPage>
   }
 
   void _submit() {
-    if (_answers[_currentIndex] == null) {
-      _key.currentState.showSnackBar(SnackBar(
-        content: Text("You must select an answer to continue."),
-      ));
-      return;
-    } else if (_currentIndex == (widget.paper.qs.length - 1)) {
+    if (_currentIndex == (widget.paper.qs.length - 1)) {
       canceltimer = true;
       Future.delayed(const Duration(milliseconds: 500), () {
         setState(() {

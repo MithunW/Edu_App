@@ -6,6 +6,7 @@ class Database {
   // Access a Cloud Firestore instance from your Activity
   final databaseReference = Firestore.instance;
 
+//fetch currently posted papers from database
   Future<List> getPapers() async {
     List list = new List<PaperShowcase>();
     await databaseReference
@@ -39,37 +40,7 @@ class Database {
     return list;
   }
 
-  List<String> getQuestions() {
-    List list = new List<String>();
-    int counter = 10;
-    int count = counter;
-    do {
-      int q = (count + 1) - counter;
-      list.add('ප්‍රශ්න $q ');
-      counter--;
-    } while (counter > 0);
-
-    return list;
-  }
-
-  void uploadPaperMarks() async {
-    await databaseReference
-        .collection("users")
-        .document()
-        .collection("paapers")
-        .document()
-        .setData({
-      'title': 'Mastering Flutter',
-      'description': 'Programming Guide for Dart'
-    });
-
-    DocumentReference ref = await databaseReference.collection("books").add({
-      'title': 'Flutter in Action',
-      'description': 'Complete Programming Guide to learn Flutter'
-    });
-    print(ref.documentID);
-  }
-
+//to get user details
   Future<User> getUserDetails(currentUser) async {
     var document = databaseReference.collection('users').document(currentUser);
     await document.get().then((userSnapshot) {
@@ -87,6 +58,7 @@ class Database {
     return null;
   }
 
+//upload the answers and paper details to database
   Future<void> uploadAnswers(paper, answers, correct) async {
     Map<dynamic, dynamic> data =
         answers.map((k, v) => MapEntry(k.toString(), v));
@@ -103,6 +75,7 @@ class Database {
     });
   }
 
+//Update leaderboard with paper marks. This is used by a paper object fucntion
   void updateLeaderboard(user, correct) async {
     var document = databaseReference.collection('leaderboard').document(user);
     await document.get().then(
@@ -117,5 +90,22 @@ class Database {
         }
       },
     );
+  }
+
+//check if the user is trying paper for the first time.
+  Future<bool> firstTime(user, paperid) async {
+    var document = databaseReference
+        .collection('leaderboard')
+        .document(user)
+        .collection("Papers")
+        .document(paperid);
+    await document.get().then((paper) {
+      if (paper.exists) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+    return null; //unreachable
   }
 }
