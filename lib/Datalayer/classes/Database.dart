@@ -86,4 +86,36 @@ class Database {
     });
     return null;
   }
+
+  Future<void> uploadAnswers(paper, answers, correct) async {
+    Map<dynamic, dynamic> data =
+        answers.map((k, v) => MapEntry(k.toString(), v));
+    await databaseReference
+        .collection("users")
+        .document('0779195992')
+        .collection("Papers")
+        .document(paper.id)
+        .setData({
+      "paper_name": 'Paper ${paper.id}',
+      "paper_URL": paper.url,
+      "answers": data,
+      "correct_answers": correct,
+    });
+  }
+
+  void updateLeaderboard(user, correct) async {
+    var document = databaseReference.collection('leaderboard').document(user);
+    await document.get().then(
+      (userScore) async {
+        if (userScore.exists) {
+          int marks = userScore['score'];
+          marks += correct;
+          await databaseReference
+              .collection("leaderboard")
+              .document(user)
+              .updateData({'score': marks});
+        }
+      },
+    );
+  }
 }

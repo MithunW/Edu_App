@@ -308,9 +308,12 @@ class _QuizPageState extends State<QuizPage>
 
   void nextPage() {
     canceltimer = true;
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) =>
-            QuizFinishedPage(questions: widget.paper.qs, answers: _answers)));
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => QuizFinishedPage(
+            questions: widget.paper.qs, answers: _answers, paper: widget.paper),
+      ),
+    );
   }
 
   void _submitTimer() {

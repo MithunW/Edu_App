@@ -8,15 +8,16 @@ class PaperScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final PaperShowcase paper = ModalRoute.of(context).settings.arguments;
+    final PaperShowcase papershowcase =
+        ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      body: buildPaperScreen(size, context, paper),
+      body: buildPaperScreen(size, context, papershowcase),
     );
   }
 
-  Widget buildPaperScreen(size, context, paper) {
+  Widget buildPaperScreen(size, context, papershowcase) {
     return FutureBuilder(
-        future: paper.loadPaper(paper.name),
+        future: papershowcase.loadPaper(papershowcase.name),
         builder: (context, paper) {
           switch (paper.connectionState) {
             case ConnectionState.none:
@@ -47,6 +48,7 @@ class PaperScreen extends StatelessWidget {
               );
             case ConnectionState.done:
               if (paper.hasError) return Text('Error: ${paper.error}');
+              paper.data.setUrl(papershowcase.url);
               return paper.data != null
                   ? SafeArea(
                       child: Scaffold(

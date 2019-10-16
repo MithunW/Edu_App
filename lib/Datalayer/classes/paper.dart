@@ -1,8 +1,11 @@
+import 'package:edu_app/Datalayer/classes/Database.dart';
+
 class Paper {
   String id;
   List<Question> qs;
   int htime;
   int mtime;
+  String url;
 
   Paper({
     this.id,
@@ -20,6 +23,19 @@ class Paper {
       htime: json["htime"],
       mtime: json["mtime"],
     );
+  }
+  void setUrl(url) {
+    this.url = url;
+  }
+
+  void saveAnswers(answers, correct) {
+    Database db = new Database();
+    db.uploadAnswers(this, answers, correct);
+  }
+
+  void updateScore(user, correct) {
+    Database db = new Database();
+    db.updateLeaderboard(user, correct);
   }
 
   void setId(String id) {

@@ -6,9 +6,14 @@ import 'package:flutter/material.dart';
 class QuizFinishedPage extends StatelessWidget {
   final List<Question> questions;
   final Map<int, dynamic> answers;
+  final Paper paper;
 
   int correctAnswers;
-  QuizFinishedPage({Key key, @required this.questions, @required this.answers})
+  QuizFinishedPage(
+      {Key key,
+      @required this.questions,
+      @required this.answers,
+      @required this.paper})
       : super(key: key);
 
   @override
@@ -19,6 +24,9 @@ class QuizFinishedPage extends StatelessWidget {
       if (this.questions[index].as[questions[index].a - 1].t == value)
         correct++;
     });
+    this.paper.saveAnswers(this.answers, correct);
+    String user = '0779195992';
+    this.paper.updateScore(user, correct);
     final TextStyle titleStyle = TextStyle(
         color: Colors.black87, fontSize: 22.0, fontWeight: FontWeight.w500);
     final TextStyle trailingStyle = TextStyle(
@@ -133,7 +141,8 @@ class QuizFinishedPage extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.black, fontSize: size.height * 0.020),
                     ),
-                    onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
+                    onPressed: () =>
+                        Navigator.pushReplacementNamed(context, '/home'),
                   ),
                 ],
               )
